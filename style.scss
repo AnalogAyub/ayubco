@@ -1,5 +1,7 @@
-@import "bourbon", "neat", "reset.css";
-@import url("http://brick.a.ssl.fastly.net/EB+Garamond:400,400i/Old+Standard:400,400i,700/Montserrat:400,700");
+@import "reset", "bourbon", "neat";
+@import url("//brick.a.ssl.fastly.net/EB+Garamond:400,400i/Old+Standard:400,400i,700/Montserrat:400,700");
+
+$visual-grid: true !global;
 
 *, *:before, *:after {
     -moz-box-sizing: border-box;
@@ -10,12 +12,13 @@
 body {
     background: black;
     color: white;
-
     font-family: "Old Standard";
-    font-size: 3em;
-    font-style: italic;
     text-rendering: optimizeLegibility;
     font-variant-ligatures: common-ligatures;
     font-feature-settings: "liga", "dlig", "kern";
     font-kerning: normal;
+}
+
+h1 {
+    color: white;
 }

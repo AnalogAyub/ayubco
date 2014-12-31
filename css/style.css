@@ -1,34 +1,90 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+@import url("//brick.a.ssl.fastly.net/EB+Garamond:400,400i/Old+Standard:400,400i,700/Montserrat:400,700");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 /* Neat 1.7.0
  * http://neat.bourbon.io
  * Copyright 2012-2014 thoughtbot, inc.
  * MIT License */
-@import url(reset.css);
-@import url("http://brick.a.ssl.fastly.net/EB+Garamond:400,400i/Old+Standard:400,400i,700/Montserrat:400,700");
 html {
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 *, *:before, *:after {
+  -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 *, *:before, *:after {
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 body {
   background: black;
   color: white;
   font-family: "Old Standard";
-  font-size: 3em;
-  font-style: italic;
   text-rendering: optimizeLegibility;
-  -webkit-font-variant-ligatures: common-ligatures;
-     -moz-font-variant-ligatures: common-ligatures;
-          font-variant-ligatures: common-ligatures;
-  -webkit-font-feature-settings: "liga", "dlig", "kern";
-     -moz-font-feature-settings: "liga", "dlig", "kern";
-          font-feature-settings: "liga", "dlig", "kern";
-  -webkit-font-kerning: normal;
-     -moz-font-kerning: normal;
-          font-kerning: normal; }
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "liga", "dlig", "kern";
+  font-kerning: normal;
+}
+
+h1 {
+  color: white;
+}
