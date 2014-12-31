@@ -1,0 +1,34 @@
+/* Neat 1.7.0
+ * http://neat.bourbon.io
+ * Copyright 2012-2014 thoughtbot, inc.
+ * MIT License */
+@import url(reset.css);
+@import url("http://brick.a.ssl.fastly.net/EB+Garamond:400,400i/Old+Standard:400,400i,700/Montserrat:400,700");
+html {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background: black;
+  color: white;
+  font-family: "Old Standard";
+  font-size: 3em;
+  font-style: italic;
+  text-rendering: optimizeLegibility;
+  -webkit-font-variant-ligatures: common-ligatures;
+     -moz-font-variant-ligatures: common-ligatures;
+          font-variant-ligatures: common-ligatures;
+  -webkit-font-feature-settings: "liga", "dlig", "kern";
+     -moz-font-feature-settings: "liga", "dlig", "kern";
+          font-feature-settings: "liga", "dlig", "kern";
+  -webkit-font-kerning: normal;
+     -moz-font-kerning: normal;
+          font-kerning: normal; }
