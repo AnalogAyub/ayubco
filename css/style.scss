@@ -1,8 +1,6 @@
 @import "reset", "bourbon", "neat";
 @import url("//brick.a.ssl.fastly.net/EB+Garamond:400,400i/Old+Standard:400,400i,700/Montserrat:400,700");
 
-$visual-grid: true !global;
-
 *, *:before, *:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
