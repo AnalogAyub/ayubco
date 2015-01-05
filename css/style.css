@@ -80,12 +80,16 @@ html {
   font-size: .8em; }
 
 .hero {
+  opacity: 0;
   background-image: url("../media/malika.jpg");
   background-size: cover;
   background-position: 25% 100%;
   height: 100vh;
   width: 100%;
-  padding: 40vh 30vw 0 3.5rem; }
+  padding: 40vh 30vw 0 3.5rem;
+  -webkit-animation: in ease-out 1s forwards;
+  -moz-animation: in ease-out 1s forwards;
+  animation: in ease-out 1s forwards; }
 
 p {
   margin: 1.6em 0; }
@@ -146,3 +150,18 @@ h2 {
     background-position: 25% 100%;
     height: 80vh;
     padding: 30vh 20vw 0 3.5rem; } }
+@-webkit-keyframes in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
