@@ -31,7 +31,7 @@ body {
     height: 100vh;
     width: 100%;
     padding: 40vh 30vw 0 3.5rem;
-    @include animation(in .8s cubic-bezier(1,0,.75,.75) .1s forwards);
+    @include animation(in .8s cubic-bezier(1,0,.75,.75) forwards);
 
     p {
         font-weight: 300;
