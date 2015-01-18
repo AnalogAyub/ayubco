@@ -37,6 +37,8 @@ body {
         font-weight: 300;
         font-style: italic;
         margin-top: 3.2em;
+        opacity: 0;
+        @include animation(in .8s cubic-bezier(1,0,.75,.75) .8s forwards);
     }
 }
 
@@ -63,6 +65,8 @@ h1 {
     font-weight: 900;
     font-size: 6.3rem;
     line-height: 11rem;
+    opacity: 0;
+    @include animation(in .8s cubic-bezier(1,0,.75,.75) .6s forwards);
 }
 
 h2 {
@@ -70,6 +74,8 @@ h2 {
     font-weight: 500;
     font-size: 4.2rem;
     line-height: 4rem;
+    opacity: 0;
+    @include animation(in .8s cubic-bezier(1,0,.75,.75) .7s forwards);
 }
 
 @media only screen and (max-width: 700px) {
