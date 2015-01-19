@@ -52,9 +52,13 @@ body {
 }
 
 .bar {
-  width: 100%;
+  width: 0;
+  opacity: 0;
   height: 1px;
   background: $light;
+  color: $navy;
+  overflow: hidden;
+  @include animation(growRight .8s cubic-bezier(1,0,.75,.75) .8s forwards);
 }
 
 p {
@@ -157,6 +161,6 @@ h2 {
 }
 
 @include keyframes(growRight) {
-  0% { opacity: 0 }
-  100% { opacity: 1 }
+  0% { width: 0; opacity: 0; height: 1px; }
+  100% { width: 100%; opacity: 1; height: auto; }
 }
