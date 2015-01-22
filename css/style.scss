@@ -25,6 +25,7 @@ body {
   font-feature-settings: "liga", "dlig", "kern", "onum", "lnum" off;
   font-kerning: normal;
   font-family: "leitura-news", Georgia, serif;
+  font-weight: 400;
   font-size: 1.5rem;
   line-height: 1.5em;
   background: $smoke;
@@ -60,15 +61,25 @@ body {
   @include outer-container;
   //$mobile: new-breakpoint (max-width 800px 4);
   padding: 0 3.5rem;
+
+  p:first-of-type:first-letter {
+    float: left;
+    font-size: 4rem;
+    line-height: 4rem;
+    margin: 0 .8rem 0 0;
+  }
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .about {
   @include span-columns(12);
-  padding: 1em;
+  padding: 3.5rem;
   background: rgba(0,0,0,0);
   color: rgba(0,0,0,0);
   position: relative;
-  margin-top: -2rem;
+  margin: -2rem auto 0;
+  max-width: 1000px;
   @include animation(aboutIn .3s ease-out 2s forwards);
   &:before {
     content: '';
@@ -90,20 +101,6 @@ p {
   margin: 1.6em 0;
 }
 
-article {
-  p:first-of-type:first-letter {
-    float: left;
-    font-size: 5.7rem;
-    line-height: 6.5rem;
-    margin: 0 10px 0 0;
-  }
-  p:not(:first-of-type) {
-      text-indent: 1.4em;
-  }
-  word-break: break-word;
-  hyphens: auto;
-}
-
 h1 {
   font-family: "acta-display";
   font-weight: 900;
@@ -115,7 +112,7 @@ h1 {
 
 h2 {
   font-family: "acta-display";
-  font-weight: 600;
+  font-weight: 700;
   font-size: 4.2rem;
   line-height: 4rem;
   opacity: 0;
@@ -123,21 +120,14 @@ h2 {
 }
 
 h3 {
-  font-family: "estilo-regular";
-  font-size: 2rem;
+  font-family: "estilo-pro";
+  font-size: 3rem;
   line-height: 4rem;
-  letter-spacing: .2rem;
+  letter-spacing: .3rem;
   text-align: center;
 }
 
 @media only screen and (max-width: 800px) {
-  article {
-    p:first-of-type:first-letter {
-      font-size: 4.6rem;
-      line-height: 5.2rem;
-      margin: 0 10px 0 0;
-    }
-  }
   p {
     font-size: .85em;
     line-height: 1.8em;
@@ -160,20 +150,19 @@ h3 {
   }
   .content {
     padding: 0 2.8rem;
-  }
-  .about {
-    margin-top: -1rem;
+    .about {
+      margin-top: -1rem;
+      padding: 2.8rem;
+    }
+    p:first-of-type:first-letter {
+      font-size: 3.5rem;
+      line-height: 3.8rem;
+      margin: 0 .7rem 0 0;
+    }
   }
 }
 
 @media only screen and (max-width: 592px) {
-  article {
-    p:first-of-type:first-letter {
-        font-size: 4rem;
-        line-height: 4.5rem;
-        margin: 0 6px 0 0;
-    }
-  }
   p {
     font-size: .7em;
     line-height: 1.8em;
@@ -199,7 +188,15 @@ h3 {
     }
   }
   .content {
-    padding: 0 2.4rem;
+    padding: 0;
+    .about {
+      padding: 1rem;
+    }
+    p:first-of-type:first-letter {
+      font-size: 3rem;
+      line-height: 3.2rem;
+      margin: 0 .6rem 0 0;
+    }
   }
 }
 
