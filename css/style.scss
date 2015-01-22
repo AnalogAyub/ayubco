@@ -10,6 +10,7 @@ $smoke: #15181A;
 $navy: #152B3C;
 $blue: #85C6D6;
 $light: #FCFCFC;
+$animation-delay: 1s;
 
 .wf-loading {
   visibility: hidden;
@@ -39,7 +40,7 @@ body {
   background-position: 10% 100%;
   height: 100vh;
   width: 100%;
-  @include animation(in .8s cubic-bezier(1,0,.75,.75) forwards);
+  @include animation(in .8s cubic-bezier(1,0,.75,.75) $animation-delay forwards);
 }
 
 .hero {
@@ -52,7 +53,7 @@ body {
     font-style: italic;
     margin-top: 3.2em;
     opacity: 0;
-    @include animation(in .8s cubic-bezier(1,0,.75,.75) .8s forwards);
+    @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
     max-width: 650px;
   }
 }
@@ -80,7 +81,7 @@ body {
   position: relative;
   margin: -2rem auto 0;
   max-width: 1000px;
-  @include animation(aboutIn .3s ease-out 2s forwards);
+  @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
   &:before {
     content: '';
     position: absolute;
@@ -89,11 +90,11 @@ body {
     opacity: 0;
     height: 1px;
     background: $light;
-    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) .8s forwards);
+    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
   }
   h3:first-of-type {
     opacity: 0;
-    @include animation(in .3s ease-out 1.9s forwards);
+    @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
   }
 }
 
@@ -107,7 +108,7 @@ h1 {
   font-size: 6.3rem;
   line-height: 11rem;
   opacity: 0;
-  @include animation(in .8s cubic-bezier(1,0,.75,.75) .6s forwards);
+  @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .6s) forwards);
 }
 
 h2 {
@@ -116,7 +117,7 @@ h2 {
   font-size: 4.2rem;
   line-height: 4rem;
   opacity: 0;
-  @include animation(in .8s cubic-bezier(1,0,.75,.75) .7s forwards);
+  @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .7s) forwards);
 }
 
 h3 {
