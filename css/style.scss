@@ -74,28 +74,30 @@ body {
 }
 
 .about {
+  &:first-of-type {
+    background: rgba(0,0,0,0);
+    color: rgba(0,0,0,0);
+    position: relative;
+    margin: -2rem auto 0;
+    @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
+    h3 {
+      opacity: 0;
+      @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      height: 1px;
+      background: $light;
+      @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
+    }
+  }
   @include span-columns(12);
   padding: 3.5rem;
-  background: rgba(0,0,0,0);
-  color: rgba(0,0,0,0);
-  position: relative;
-  margin: -2rem auto 0;
   max-width: 1000px;
-  @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    height: 1px;
-    background: $light;
-    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
-  }
-  h3:first-of-type {
-    opacity: 0;
-    @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
-  }
 }
 
 p {
