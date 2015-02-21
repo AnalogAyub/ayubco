@@ -10,7 +10,7 @@ $smoke: #15181A;
 $navy: #152B3C;
 $blue: #85C6D6;
 $light: #FCFCFC;
-$animation-delay: .9s;
+$animation-delay: .5s;
 
 .wf-loading {
   visibility: hidden;
@@ -73,15 +73,10 @@ body {
 }
 
 nav {
-  background: rgba(0,0,0,0);
   color: rgba(0,0,0,0);
   position: relative;
-  margin: 0 auto 4rem;
-  @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
-  h3 {
-    opacity: 0;
-    @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
-  }
+  margin: -4rem auto 3.5rem;
+  height: 5rem;
   &:before {
     content: '';
     position: absolute;
@@ -90,10 +85,65 @@ nav {
     opacity: 0;
     height: 1px;
     background: $light;
-    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
+    @include animation(navGrowRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
   }
-  padding: 3.5rem;
-  max-width: 1000px;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 1px;
+    width: 100%;
+    background: $light;
+    @include animation(navExpandDown .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 1.7s) forwards);
+  }
+  li {
+    display: block;
+    text-align: center;
+    font-family: estilo-pro;
+    font-weight: 100;
+    letter-spacing: .2rem;
+    line-height: 5rem;
+    opacity: 0;
+    color: $light;
+    & a {
+      color: $light;
+      text-decoration: none;
+      display: block;
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all .2s ease-in;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 1.1rem;
+        @include transform(scale(0.1));
+        height: 1px;
+        background: $blue;
+        @include span-columns(2);
+        @include shift(1);
+        transition: all .3s cubic-bezier(1,0,.75,.75);
+      }
+      &:hover {
+        transition: all .2s ease-in;
+        color: $blue;
+        &:after {
+          @include transform(scale(1));
+        }
+      }
+    }
+    &:first-of-type {
+      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 1.9s) forwards);
+    }
+    &:nth-of-type(2) {
+      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2s) forwards);
+    }
+    &:nth-of-type(3) {
+      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.1s) forwards);
+    }
+    @include span-columns(4);
+  }
   @include span-columns(8);
   @include media(max-width 1280px) {
     @include span-columns(12);
@@ -104,24 +154,10 @@ nav {
   background: rgba(0,0,0,0);
   color: rgba(0,0,0,0);
   position: relative;
-  margin: -4rem auto 0;
-  @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
-  h3 {
-    opacity: 0;
-    @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    height: 1px;
-    background: $light;
-    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
-  }
+  top: 1rem;
+  margin: 0 auto;
+  @include animation(aboutIn .3s ease-out ($animation-delay + 2.5s) forwards);
   padding: 3.5rem;
-  max-width: 1000px;
   @include span-columns(8);
   @include media(max-width 1280px) {
     @include span-columns(12);
@@ -152,6 +188,7 @@ h2 {
 
 h3 {
   font-family: "estilo-pro";
+  font-weight: 500;
   font-size: 3rem;
   line-height: 4rem;
   letter-spacing: .3rem;
@@ -189,8 +226,10 @@ footer {
   }
   .content {
     padding: 0 2.8rem;
+    nav {
+      margin: -1rem auto 2.8rem;
+    }
     .about {
-      &:first-of-type { margin-top: -1rem }
       padding: 2.8rem;
     }
     p:first-of-type:first-letter {
@@ -200,7 +239,8 @@ footer {
     }
   }
   footer {
-    margin: 3.5rem 2.8rem 0;
+    margin: 2.8rem 2.8rem 0;
+    padding: 2.8rem;
   }
 }
 
@@ -224,7 +264,7 @@ footer {
     height: 75vh;
   }
   .hero {
-    margin: calc(75vh - 250px) 2.4rem 0;
+    margin: calc(75vh - 250px) 2.8rem 0;
     height: 360px;
     p {
       max-width: 280px;
@@ -232,8 +272,10 @@ footer {
   }
   .content {
     padding: 0;
+    nav {
+      margin: 5rem auto 2.8rem;
+    }
     .about {
-      &:first-of-type { margin-top: 5rem }
       padding: 1rem;
     }
     p:first-of-type:first-letter {
@@ -244,8 +286,7 @@ footer {
   }
 
   footer {
-    margin: 3.5rem 0 0;
-    padding: 1em;
+    margin: 2.8rem 0 0;
   }
 }
 
@@ -255,11 +296,16 @@ footer {
 }
 
 @include keyframes(aboutIn) {
-  0% { background: rgba(0,0,0,0); color: rgba(0,0,0,0); }
-  100% { background: $light; color: $navy; }
+  0% { top: 1rem; background: rgba(0,0,0,0); color: rgba(0,0,0,0); }
+  100% { top: 0; background: $light; color: $navy; }
 }
 
-@include keyframes(growRight) {
+@include keyframes(navGrowRight) {
   0% { width: 0; opacity: 0; }
   100% { width: 100%; opacity: 1; }
+}
+
+@include keyframes(navExpandDown) {
+  0% { top: 0; opacity: 0; }
+  100% { top: 5rem; opacity: 1; }
 }

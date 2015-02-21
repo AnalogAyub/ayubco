@@ -11,6 +11,7 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 - “I like to create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust.”
 
 ## Nav
+- Work (index)
 - Exposures
 - Canon
 - Musings
