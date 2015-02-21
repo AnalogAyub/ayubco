@@ -120,7 +120,7 @@ nav {
         bottom: 1.1rem;
         @include transform(scale(0.1));
         height: 1px;
-        background: $blue;
+        background: $light;
         @include span-columns(2);
         @include shift(1);
         transition: all .3s cubic-bezier(1,0,.75,.75);
@@ -130,6 +130,7 @@ nav {
         color: $blue;
         &:after {
           @include transform(scale(1));
+          background: $blue;
         }
       }
     }
@@ -203,7 +204,43 @@ footer {
   padding: 3.5rem 0;
 }
 
-@media only screen and (max-width: 800px) {
+// @media screen and (min-height: 750px) and (max-width: 600px) {
+//   .hero {
+//     top: -50px;
+//   }
+//   .content {
+//     margin-top: -50px;
+//   }
+// }
+
+// @media screen and (min-height: 800px) and (max-width: 800px) {
+//   .hero {
+//     top: -100px;
+//   }
+//   .content {
+//     margin-top: -100px;
+//   }
+// }
+
+@media screen and (min-height: 760px) {
+  .hero {
+    top: -100px;
+  }
+  .content {
+    margin-top: -100px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .hero {
+    top: -200px;
+  }
+  .content {
+    margin-top: -200px;
+  }
+}
+
+@media screen and (max-width: 800px) {
   p {
     font-size: .85em;
     line-height: 1.8em;
@@ -244,7 +281,7 @@ footer {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   p {
     font-size: .7em;
     line-height: 1.8em;
@@ -287,6 +324,16 @@ footer {
 
   footer {
     margin: 2.8rem 0 0;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .content {
+    nav {
+      margin: 6rem auto 2.8rem;
+      li { font-size: 1.2rem }
+    }
+    h3 { font-size: 2.5rem }
   }
 }
 
