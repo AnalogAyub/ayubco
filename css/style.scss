@@ -44,14 +44,14 @@ body {
 }
 
 .hero {
-  margin: calc(100vh - 480px) 3.5rem 0;
-  height: 480px;
+  margin: calc(100vh - 500px) 3.5rem 0;
+  height: 500px;
   position: absolute;
   top: 0;
   p {
     font-weight: 300;
     font-style: italic;
-    margin-top: 3.2em;
+    margin-top: 2.4em;
     opacity: 0;
     @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
     max-width: 650px;
@@ -60,9 +60,8 @@ body {
 
 .content {
   @include outer-container;
-  //$mobile: new-breakpoint (max-width 800px 4);
   padding: 0 3.5rem;
-
+  margin: 0;
   p:first-of-type:first-letter {
     float: left;
     font-size: 4rem;
@@ -73,31 +72,60 @@ body {
   hyphens: auto;
 }
 
-.about {
-  &:first-of-type {
-    background: rgba(0,0,0,0);
-    color: rgba(0,0,0,0);
-    position: relative;
-    margin: -2rem auto 0;
-    @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
-    h3 {
-      opacity: 0;
-      @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      height: 1px;
-      background: $light;
-      @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
-    }
+nav {
+  background: rgba(0,0,0,0);
+  color: rgba(0,0,0,0);
+  position: relative;
+  margin: 0 auto 4rem;
+  @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
+  h3 {
+    opacity: 0;
+    @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
   }
-  @include span-columns(12);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 1px;
+    background: $light;
+    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
+  }
   padding: 3.5rem;
   max-width: 1000px;
+  @include span-columns(8);
+  @include media(max-width 1280px) {
+    @include span-columns(12);
+  }
+}
+
+.about {
+  background: rgba(0,0,0,0);
+  color: rgba(0,0,0,0);
+  position: relative;
+  margin: -4rem auto 0;
+  @include animation(aboutIn .3s ease-out ($animation-delay + 2s) forwards);
+  h3 {
+    opacity: 0;
+    @include animation(in .3s ease-out ($animation-delay + 1.9s) forwards);
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 1px;
+    background: $light;
+    @include animation(growRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
+  }
+  padding: 3.5rem;
+  max-width: 1000px;
+  @include span-columns(8);
+  @include media(max-width 1280px) {
+    @include span-columns(12);
+  }
 }
 
 p {
@@ -171,14 +199,12 @@ footer {
       margin: 0 .7rem 0 0;
     }
   }
-
   footer {
     margin: 3.5rem 2.8rem 0;
   }
-
 }
 
-@media only screen and (max-width: 592px) {
+@media only screen and (max-width: 600px) {
   p {
     font-size: .7em;
     line-height: 1.8em;
@@ -195,10 +221,10 @@ footer {
   .bg {
     background-image: url("../media/malikamobile.jpg");
     background-position: 20% 100%;
-    height: 95vh;
+    height: 75vh;
   }
   .hero {
-    margin: calc(95vh - 360px) 2.4rem 0;
+    margin: calc(75vh - 250px) 2.4rem 0;
     height: 360px;
     p {
       max-width: 280px;
@@ -207,6 +233,7 @@ footer {
   .content {
     padding: 0;
     .about {
+      &:first-of-type { margin-top: 5rem }
       padding: 1rem;
     }
     p:first-of-type:first-letter {
