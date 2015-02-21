@@ -3,11 +3,17 @@ ayub.co
 
 Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat.
 
+=======
 
 # Layout / Index
 
 ## Header
 - “I like to create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust.”
+
+## Nav
+- Exposures
+- Canon
+- Musings
 
 ## Work [(reference)](http://jim-silverman.com/)
 - Grid of cases mixed with shots
@@ -19,7 +25,7 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 - Dinner/desert also on sidebar? (http://braveux.com/team)
 
 ## Footer [(reference)](http://daneden.me/)
-- Contact: email/twitter
+- Contact: email/twitter/codepen
 - Presently: reading/listening
 
 =======
