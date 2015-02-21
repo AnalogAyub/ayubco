@@ -19,11 +19,11 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 ## Work [(reference)](http://jim-silverman.com/)
 - Grid of cases mixed with shots
 >>> Shots should link to blog?
-- Case studies should include challenges/solutions/scope per project: http://braveux.com/work/stateofobesity
+- Case studies should include challenges/solutions/scope per project [(reference)](http://braveux.com/work/stateofobesity)
 
 ## Fundamentals
 - Experience on sidebar, collapses to underneath on mobile
-- Dinner/desert also on sidebar? (http://braveux.com/team)
+- Dinner/desert also on sidebar? [(reference)](http://braveux.com/team)
 
 ## Footer [(reference)](http://daneden.me/)
 - Contact: email/twitter/codepen
