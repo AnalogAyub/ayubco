@@ -6,7 +6,8 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 # Layout / Index
 
 ### Header
-- “I like to create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust.”
+
+> “I like to create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust.”
 
 ### Nav
 - Work (index)
@@ -15,13 +16,13 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 - Musings
 
 ### Work [(reference)](http://jim-silverman.com/)
-- Grid of cases mixed with shots
->>> Shots should link to blog?
+- Grid of case studies mixed with dribbble-like individual shots
+- Should “shots” link to blog?
 - Case studies should include challenges/solutions/scope per project [(reference)](http://braveux.com/work/stateofobesity)
 
 ### Fundamentals
-- Experience on sidebar, collapses to underneath on mobile
-- Dinner/desert also on sidebar? [(reference)](http://braveux.com/team)
+- CV Experience on sidebar, collapses to underneath on mobile
+- Dinner/desert also on bottom sidebar? [(reference)](http://braveux.com/team)
 
 ### Footer [(reference)](http://daneden.me/)
 - Contact: email/twitter/codepen
