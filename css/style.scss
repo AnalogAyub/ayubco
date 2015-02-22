@@ -22,9 +22,10 @@ $animation-delay: .5s;
 
 body {
   text-rendering: optimizeLegibility;
-  font-variant-ligatures: common-ligatures;
-  font-feature-settings: "liga", "dlig", "kern", "onum", "lnum" off;
-  font-kerning: normal;
+  // font-variant-ligatures: common-ligatures;
+  // font-feature-settings: "liga", "dlig", "kern", "onum", "lnum" off;
+  // font-kerning: normal;
+  @include font-feature-settings("liga", "dlig", "onum", "pnum", "salt", "swsh");
   font-family: "leitura-news", Georgia, serif;
   font-weight: 400;
   font-size: 1.5rem;
@@ -72,6 +73,13 @@ body {
   hyphens: auto;
 }
 
+.estilo {
+  font-family: estilo-pro;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 3rem;
+}
+
 nav {
   @include background-image(radial-gradient(rgba(21,24,26,1) 20%, rgba(21,24,26,0) 90%));
   color: rgba(0,0,0,0);
@@ -103,6 +111,7 @@ nav {
     display: block;
     text-align: center;
     font-family: estilo-pro;
+    font-size: 1.2em;
     font-weight: 100;
     letter-spacing: .2rem;
     line-height: 5rem;
@@ -204,24 +213,6 @@ footer {
   margin: 3.5rem 3.5rem 0;
   padding: 3.5rem 0;
 }
-
-// @media screen and (min-height: 750px) and (max-width: 600px) {
-//   .hero {
-//     top: -50px;
-//   }
-//   .content {
-//     margin-top: -50px;
-//   }
-// }
-
-// @media screen and (min-height: 800px) and (max-width: 800px) {
-//   .hero {
-//     top: -100px;
-//   }
-//   .content {
-//     margin-top: -100px;
-//   }
-// }
 
 @media screen and (min-height: 760px) {
   .hero {
