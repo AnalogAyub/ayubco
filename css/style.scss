@@ -20,11 +20,29 @@ $animation-delay: .5s;
   visibility: visible;
 }
 
+@mixin debug($color) {
+  border: 1px $color solid;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
 body {
   text-rendering: optimizeLegibility;
-  // font-variant-ligatures: common-ligatures;
-  // font-feature-settings: "liga", "dlig", "kern", "onum", "lnum" off;
-  // font-kerning: normal;
   @include font-feature-settings("liga", "dlig", "onum", "pnum", "salt", "swsh");
   font-family: "leitura-news", Georgia, serif;
   font-weight: 400;
@@ -50,9 +68,7 @@ body {
   position: absolute;
   top: 0;
   p {
-    font-weight: 300;
-    font-style: italic;
-    margin-top: 2.4em;
+    margin-top: 2.3em;
     opacity: 0;
     @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
     max-width: 650px;
@@ -63,6 +79,7 @@ body {
   @include outer-container;
   padding: 0 3.5rem;
   margin: 0;
+  width: 100%;
   p:first-of-type:first-letter {
     float: left;
     font-size: 4rem;
@@ -78,6 +95,7 @@ body {
   font-style: normal;
   font-weight: 500;
   font-size: 3rem;
+  line-height: 3rem;
 }
 
 nav {
@@ -128,7 +146,7 @@ nav {
         content: '';
         position: absolute;
         bottom: 1.1rem;
-        @include transform(scale(0.1));
+        @include transform(scale(0.2));
         height: 1px;
         background: $light;
         @include span-columns(2);
@@ -172,6 +190,31 @@ nav {
   @include span-columns(8);
   @include media(max-width 1280px) {
     @include span-columns(12);
+  }
+}
+
+.works {
+  @include span-columns(12);
+  .worksWrapper {
+    @include columns(4 200px);
+    @include column-gap(1rem);
+    .case {
+      @include aspect-ratio(2, 1);
+      @include column-span(all);
+      width: 100%;
+      margin-bottom: 1rem;
+      background: url("https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xaf1/t31.0-8/10750084_706697876093934_6735099618187705147_o.jpg");
+      background-size: cover;
+      padding: 3.5rem;
+      & .inner {
+        padding: 30% 38% 3rem 3rem;
+        @include background-image(linear-gradient(rgba(21,43,60,0) 50%, rgba(21,43,60,1) 100%));
+      }
+    }
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 }
 
@@ -303,6 +346,7 @@ footer {
     padding: 0;
     nav {
       margin: 5rem auto 2.8rem;
+      li { font-size: 1em }
     }
     .about {
       padding: 1rem;
@@ -345,6 +389,7 @@ footer {
 }
 
 @include keyframes(navExpandDown) {
-  0% { top: 0; opacity: 0; }
+  0% { top: 0 }
+  50% { opacity: 0 }
   100% { top: 5rem; opacity: 1; }
 }

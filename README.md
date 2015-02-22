@@ -23,6 +23,7 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 ### Fundamentals
 - CV Experience on sidebar, collapses to underneath on mobile
 - Dinner/desert also on bottom sidebar? [(reference)](http://braveux.com/team)
+- Wait do I even need these when ^^^ I could just write them in the copy?
 
 ### Footer [(reference)](http://daneden.me/)
 - Contact: email/twitter/codepen
