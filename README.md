@@ -30,7 +30,9 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 # Other Pages
 
 - Exposures
+
 > “selected photograhy, by passion not profession. I shoot on…”
+
 - Canon [(reference)](http://www.davidcole.me/#canon)
 - Musings (blog) (reference [1](http://codepen.io/hackthevoid/pen/ACkKl) [2](https://dribbble.com/shots/1919009-Best-2-years/attachments/329509))
 
