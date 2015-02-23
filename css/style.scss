@@ -96,6 +96,7 @@ body {
   font-weight: 500;
   font-size: 3rem;
   line-height: 3rem;
+  display: none;
 }
 
 nav {
@@ -180,8 +181,9 @@ nav {
 }
 
 .about {
-  background: rgba(0,0,0,0);
-  color: rgba(0,0,0,0);
+  opacity: 0;
+  background: $light;
+  color: $navy;
   position: relative;
   top: 1rem;
   margin: 0 auto;
@@ -220,6 +222,32 @@ nav {
 
 p {
   margin: 1.6em 0;
+  & a {
+      color: $navy;
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+      transition: all .2s ease-in;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: .25rem;
+        left: 0;
+        height: 1px;
+        background: $navy;
+        width: 100%;
+        transition: all .2s cubic-bezier(1,0,.75,.75);
+      }
+      &:hover {
+        transition: all .2s ease-in;
+        color: $blue;
+        &:after {
+          height: 3px;
+          bottom: 0;
+          background: $blue;
+        }
+      }
+    }
 }
 
 h1 {
@@ -379,8 +407,8 @@ footer {
 }
 
 @include keyframes(aboutIn) {
-  0% { top: 1rem; background: rgba(0,0,0,0); color: rgba(0,0,0,0); }
-  100% { top: 0; background: $light; color: $navy; }
+  0% { top: 1rem; opacity: 0; }
+  100% { top: 0; opacity: 1; }
 }
 
 @include keyframes(navGrowRight) {
