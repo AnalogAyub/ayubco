@@ -292,31 +292,31 @@ nav {
 p {
   margin: 1.6em 0;
   & a {
-      color: $navy;
-      text-decoration: none;
-      position: relative;
-      cursor: pointer;
+    color: $navy;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: .25rem;
+      left: 0;
+      height: 1px;
+      background: $navy;
+      width: 100%;
+      transition: all .2s cubic-bezier(1,0,.75,.75);
+    }
+    &:hover {
       transition: all .2s ease-in;
+      color: $blue;
       &:after {
-        content: '';
-        position: absolute;
-        bottom: .25rem;
-        left: 0;
-        height: 1px;
-        background: $navy;
-        width: 100%;
-        transition: all .2s cubic-bezier(1,0,.75,.75);
-      }
-      &:hover {
-        transition: all .2s ease-in;
-        color: $blue;
-        &:after {
-          height: 3px;
-          bottom: 0;
-          background: $blue;
-        }
+        height: 3px;
+        bottom: 0;
+        background: $blue;
       }
     }
+  }
 }
 
 h1 {
@@ -373,8 +373,9 @@ footer {
   }
   & a {
     color: $light;
+    text-decoration: underline;
     font-style: italic;
-    &:after { background: $light }
+    &:after { display: none }
   }
 }
 
@@ -434,6 +435,7 @@ footer {
   footer {
     margin: 2.8rem;
     @include column-gap(5.6rem);
+    & div { padding-top: 2.8rem }
   }
 }
 
@@ -466,8 +468,8 @@ footer {
   .content {
     padding: 0;
     nav {
-      margin: 5rem auto 2.8rem;
-      li { font-size: 1em }
+      margin: 5rem auto 1px;
+      li { font-size: 1em; letter-spacing: .1rem; }
     }
     .about {
       padding: 1rem;
@@ -477,16 +479,24 @@ footer {
         margin: 0 .6rem 0 0;
       }
     }
+    .works {
+      .worksWrapper { @include column-gap(0) }
+      .case { margin-bottom: 0 }
+      img { margin-bottom: 0 }
+    }
   }
 
   footer {
     margin: 2.8rem 0 0;
     padding: 0 1rem;
     font-size: 1.5rem;
+    @include columns(1);
     & div {
-      padding: 2rem 0;
+      padding: 3rem 0;
+      max-width: 300px;
       &.left {
         text-align: left;
+        padding-bottom: 1rem;
         & h3 { text-align: left }
       }
       &.right { padding-top: 0 }
@@ -497,7 +507,7 @@ footer {
 @media screen and (max-width: 374px) {
   .content {
     nav {
-      margin: 6rem auto 2.8rem;
+      margin: 6rem auto 0;
       li { font-size: 1.2rem }
     }
     h3 { font-size: 2.5rem }
