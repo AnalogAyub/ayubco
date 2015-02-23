@@ -52,6 +52,8 @@ body {
   color: $light;
 }
 
+em { font-style: italic }
+
 .bg {
   opacity: 0;
   background-image: url("../media/malika.jpg");
@@ -80,7 +82,7 @@ body {
     margin-top: 2.3em;
     opacity: 0;
     @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
-    max-width: 650px;
+    max-width: 600px;
   }
 }
 
@@ -97,15 +99,6 @@ body {
   }
   word-break: break-word;
   hyphens: auto;
-}
-
-.estilo {
-  font-family: estilo-pro;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 3rem;
-  line-height: 3rem;
-  display: none;
 }
 
 nav {
@@ -289,6 +282,9 @@ nav {
     img {
       width: 100%;
       margin-bottom: 1rem;
+      &:nth-of-type(5), &:nth-of-type(6) {
+        margin-bottom: 0;
+      }
     }
   }
   @include span-columns(8);
@@ -424,7 +420,7 @@ footer {
     margin: calc(95vh - 410px) 2.8rem 0;
     height: 410px;
     p {
-      max-width: 550px;
+      max-width: 500px;
     }
   }
   .content {
