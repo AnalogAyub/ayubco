@@ -60,6 +60,15 @@ body {
   height: 100vh;
   width: 100%;
   @include animation(in .8s cubic-bezier(1,0,.75,.75) $animation-delay forwards);
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    @include background-image(linear-gradient(rgba(21,24,26,0) 80%, rgba(21,24,26,1) 100%));
+  }
 }
 
 .hero {
@@ -227,9 +236,8 @@ nav {
         & h1 {
           position: absolute;
           top: 50%;
-          width: calc(100% - 6rem);
+          width: 100%;
           height: 50%;
-          left: 3rem;
           line-height: 0%;
           opacity: 1;
           @include animation(none);
