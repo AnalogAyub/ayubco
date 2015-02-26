@@ -12,13 +12,8 @@ $blue: #85C6D6;
 $light: #FCFCFC;
 $animation-delay: .5s;
 
-.wf-loading {
-  visibility: hidden;
-}
-
-.wf-active {
-  visibility: visible;
-}
+.wf-loading { visibility: hidden }
+.wf-active { visibility: visible }
 
 @mixin debug($color) {
   border: 1px $color solid;
@@ -377,6 +372,8 @@ footer {
     letter-spacing: .2rem;
   }
   & a {
+    position: static;
+    display: inline-block;
     color: $light;
     text-decoration: underline;
     font-style: italic;
