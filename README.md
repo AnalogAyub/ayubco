@@ -1,7 +1,7 @@
 ayub.co
 =======
 
-Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat.
+Personal portfolio site.
 
 # Layout / Index
 
@@ -12,21 +12,18 @@ Personal portfolio site made with magic. By magic I mean SCSS, Bourbon, and Neat
 ### Nav
 - Work (index)
 - Exposures
-- Canon
-- Musings
+- Blog (unnamed, includes canon)
 
 ### Work [(reference)](http://jim-silverman.com/)
-- Grid of case studies mixed with dribbble-like individual shots
-- Should “shots” link to blog?
+- Grid of case studies mixed with dribbble-esque individual shots
+- Should “shots” link to blog? … probably, easier than making individual case study pages
 - Case studies should include challenges/solutions/scope per project [(reference)](http://braveux.com/work/stateofobesity)
 
 ### Fundamentals
-- CV Experience on sidebar, collapses to underneath on mobile
-- Dinner/desert also on bottom sidebar? [(reference)](http://braveux.com/team)
-- Wait do I even need these when ^^^ I could just write them in the copy?
+- CV Education/Experience on sidebar, collapses to underneath on mobile
 
 ### Footer [(reference)](http://daneden.me/)
-- Contact: email/twitter/codepen
+- Contact: email/twitter
 - Presently: reading/listening
 
 # Other Pages
