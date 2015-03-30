@@ -3,6 +3,13 @@ ayub.co
 
 Personal portfolio site.
 
+# TODO
+- New copy, again, too pretentious and lengthy
+- I'd like to parallax the bg image if I can avoid killing performance
+- VH mobile resize bug
+- Blog via Ghost
+- Make footer not css-columns because that's silly and leads to bugs
+
 # Layout / Index
 
 ### Header
