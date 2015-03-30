@@ -49,11 +49,17 @@ body {
 
 em { font-style: italic }
 
+::selection {
+  color: $light;
+  background: $blue;
+}
+
 .bg {
   opacity: 0;
   background-image: url("../media/malika.jpg");
   background-size: cover;
   background-position: 10% 100%;
+  background-attachment: fixed;
   height: 100vh;
   width: 100%;
   @include animation(in .8s cubic-bezier(1,0,.75,.75) $animation-delay forwards);
@@ -64,11 +70,11 @@ em { font-style: italic }
     top: 0;
     width: 100%;
     height: 100%;
-    @include background-image(linear-gradient(rgba(21,24,26,0) 80%, rgba(21,24,26,1) 100%));
+    @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 96%));
   }
 }
 
-.hero {
+header {
   margin: calc(100vh - 500px) 3.5rem 0;
   height: 500px;
   position: absolute;
@@ -81,23 +87,23 @@ em { font-style: italic }
   }
 }
 
-.content {
+main {
   @include outer-container;
   padding: 0 3.5rem;
   margin: 0;
   width: 100%;
-  .about p:first-of-type:first-letter {
-    float: left;
-    font-size: 4rem;
-    line-height: 4rem;
-    margin: 0 .8rem 0 0;
-  }
   word-break: break-word;
   hyphens: auto;
 }
 
+p.dropcap:first-of-type:first-letter {
+  float: left;
+  font-size: 4rem;
+  line-height: 4rem;
+  margin: 0 .8rem 0 0;
+}
+
 nav {
-  @include background-image(radial-gradient(rgba(21,24,26,1) 20%, rgba(21,24,26,0) 90%));
   color: rgba(0,0,0,0);
   position: relative;
   margin: -4rem auto 3.5rem;
@@ -193,95 +199,13 @@ nav {
 }
 
 .works {
+  margin-top: 3.5rem;
+  @include media(max-width 800px) { margin-top: 2.8rem }
+  background-size: 100%;
   @include span-columns(12);
-  .worksWrapper {
-    @include columns(2 200px);
-    @include column-gap(1rem);
-    .case {
-      display: block;
-      color: $light;
-      @include aspect-ratio(2, 1);
-      @include column-span(all);
-      width: 100%;
-      margin-bottom: 1rem;
-      &.oculr {
-        background: url("../media/oculr.jpg");
-        background-size: cover;
-      }
-      &.two {
-        background: url("https://unsplash.imgix.net/photo-1418479631014-8cbf89db3431?dpr=2&fit=crop&fm=jpg&h=500&q=75&w=725");
-        background-size: cover;
-      }
-      &.three {
-        background: url("https://ununsplash.imgix.net/photo-1416424500327-a57ace7358b8?dpr=2&fit=crop&fm=jpg&h=550&q=75&w=725");
-        background-size: cover;
-      }
-      & .inner {
-        overflow: hidden;
-        text-align: center;
-        @include background-image(linear-gradient(rgba(21,24,26,0) 20%, rgba(21,24,26,.7) 80%));
-        transition: .5s all cubic-bezier(1,0,.75,.75);
-        & h1 {
-          position: absolute;
-          top: 50%;
-          width: 100%;
-          height: 50%;
-          line-height: 0%;
-          opacity: 1;
-          @include animation(none);
-          transition: .5s all cubic-bezier(1,0,.75,.75);
-        }
-        & p {
-          position: absolute;
-          margin: 0;
-          bottom: -13%;
-          width: calc(100% - 6rem);
-          height: 50%;
-          left: 3rem;
-          opacity: 0;
-          font-style: italic;
-          @include transform(scale(.95));
-          transition: .5s all cubic-bezier(1,0,.75,.75);
-        }
-        &:after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 0;
-          height: 1px;
-          opacity: 0;
-          background: $light;
-          transition: .5s all cubic-bezier(1,0,.75,.75);
-        }
-      }
-      @include media(min-width 600px) {
-        &:hover {
-          > .inner {
-            &:after {
-              left: 3rem;
-              width: calc(100% - 6rem);
-              opacity: 1;
-            }
-            & h1 {
-              top: 25%;
-            }
-            & p {
-              opacity: 1;
-              @include transform(scale(1));
-            }
-          }
-        }
-      }
-    }
-    img {
-      width: 100%;
-      margin-bottom: 1rem;
-      &:nth-of-type(5), &:nth-of-type(6) {
-        margin-bottom: 0;
-      }
-    }
-  }
+  position: relative;
+  padding: 3.5rem;
+  a { color: $light; &:after { background: $light } }
   @include span-columns(8);
   @include media(max-width 1280px) {
     @include span-columns(12);
@@ -358,10 +282,16 @@ footer {
     &.left {
       text-align: right;
       & h3 { text-align: right }
+      @include media(min-width 1242px) {
+        padding-left: 99px;
+      }
     }
     &.right {
       text-align: left;
       & h3 { text-align: left }
+      @include media(min-width 1242px) {
+        padding-right: 99px;
+      }
     }
   }
   & h3 {
@@ -382,19 +312,19 @@ footer {
 }
 
 @media screen and (min-height: 760px) {
-  .hero {
+  header {
     top: -100px;
   }
-  .content {
+  main {
     margin-top: -100px;
   }
 }
 
 @media screen and (min-height: 1000px) {
-  .hero {
+  header {
     top: -200px;
   }
-  .content {
+  main {
     margin-top: -200px;
   }
 }
@@ -413,26 +343,27 @@ footer {
     background-position: 30% 100%;
     height: 95vh;
   }
-  .hero {
+  header {
     margin: calc(95vh - 410px) 2.8rem 0;
     height: 410px;
     p {
       max-width: 500px;
     }
   }
-  .content {
+  main {
     padding: 0 2.8rem;
     nav {
       margin: -1rem auto 2.8rem;
     }
     .about {
       padding: 2.8rem;
-      p:first-of-type:first-letter {
-        font-size: 3.5rem;
-        line-height: 3.8rem;
-        margin: 0 .7rem 0 0;
-      }
     }
+    .works { padding: 2.8rem }
+  }
+  p.dropcap:first-of-type:first-letter {
+    font-size: 3.5rem;
+    line-height: 3.8rem;
+    margin: 0 .7rem 0 0;
   }
   footer {
     margin: 2.8rem;
@@ -459,33 +390,33 @@ footer {
     background-image: url("../media/malikamobile.jpg");
     background-position: 20% 100%;
     height: 75vh;
+    &:after {
+      @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 75%));
+    }
   }
-  .hero {
+  header {
     margin: calc(75vh - 250px) 2.8rem 0;
     height: 360px;
     p {
       max-width: 280px;
     }
   }
-  .content {
+  main {
     padding: 0;
     nav {
       margin: 5rem auto 1px;
       li { font-size: 1em; letter-spacing: .1rem; }
+      &:after { display: none }
     }
     .about {
       padding: 1rem;
-      p:first-of-type:first-letter {
-        font-size: 3rem;
-        line-height: 3.2rem;
-        margin: 0 .6rem 0 0;
-      }
     }
-    .works {
-      .worksWrapper { @include column-gap(0) }
-      .case { margin-bottom: 0 }
-      img { margin-bottom: 0 }
+    p.dropcap:first-of-type:first-letter {
+      font-size: 3rem;
+      line-height: 3.2rem;
+      margin: 0 .6rem 0 0;
     }
+    .works { padding: 1rem }
   }
 
   footer {
@@ -507,7 +438,7 @@ footer {
 }
 
 @media screen and (max-width: 374px) {
-  .content {
+  main {
     nav {
       margin: 6rem auto 0;
       li { font-size: 1.2rem }

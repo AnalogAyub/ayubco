@@ -11,63 +11,63 @@
   <body>
     <div class="bg">
     </div>
-    <div class="hero">
+    <header>
         <h1>Hey,</h1>
         <h2>I’m Bilal Ayub.</h2>
         <p>I create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust.</p>
-    </div>
-    <div class="content">
+    </header>
+    <main>
       <nav>
       <li><a href="/">Work</a></li>
       <li><a href="/exposures">Exposures</a></li>
-      <li><a href="#">Musings</a></li>
+      <li><a href="#">Blog</a></li>
       </nav>
       <section class="about">
-        <h3>Fundamentals</h3>
-        <p>The ultimate ingredient is stardust. I like mine in the form of thoughtful bits and pixels. With these tools, I design and code websites and beautiful things. Most importantly, I guide <em>identities, experiences, and narratives</em> from idea to fruition to promotion.</p>
-        <p>I work in multiple dimensions of design. For each new project, I think about the overarching strategy and the implicit user experience before making visuals or writing code.</p>
-        <p>As a business student with <a href="http://jindal.utdallas.edu/undergraduate-programs/honors-program/">a lovely cohort</a>, I’m learing how to convert ideas into business endeavours and build striking brands along the way.</p>
-        <p>Offscreen, you’ll find me trying to slow my mind down by making my heart work as fast as possible—cycling or playing racquetball. Sometimes I may be <a href="/exposures">shooting film</a>, writing verse, or reading theoretical physics.</p>
+        <h3 class="title">Fundamentals</h3>
+        <p class="dropcap">The ultimate ingredient is stardust — mine is made up of bits and pixels. With these tools, I guide <em>identities, experiences, and narratives</em> from idea to fruition to promotion.</p>
+        <p>Diversity is essential, so I value the importance of visiting every universe of design. I worked on my first real brand to grow a local business when I was 13. Since then, I've flirted with everything from video production and art catalogues to pitch decks and mobile apps, and most recently, web design and development.</p>
+        <p>Slowly, I've learned to appreciate both breadth and depth in effective design. For each new project, I think about the overarching strategy and the implicit user experience before placing a pixel or writing a line of code.</p>
+        <p>As a business student in <a href="http://jindal.utdallas.edu/undergraduate-programs/honors-program/">a lovely cohort</a>, I’m learning more about how to convert ideas into business endeavours and build striking brands along the way. Offscreen, I may be <a href="/exposures">shooting film</a> or reading theoretical physics.</p>
       </section>
       <section class="works">
-        <h3>Work</h3>
-        <div class="worksWrapper">
-          <a href="/oculr" class="case oculr">
-            <div class="inner">
-              <h1>Oculr</h1>
-              <p>An education app designed to help students learn about math and science intuitively</p>
-            </div>
-          </a>
-          <img src="http://lorempixel.com/500/357/city/1">
-          <img src="http://lorempixel.com/500/357/city/2">
-          <a href="/two" class="case two">
-            <div class="inner">
-              <h1>Secondly</h1>
-              <p>Something amazing I made with a case study to detail what I achieved</p>
-            </div>
-          </a>
-          <img src="http://lorempixel.com/500/357/city/3">
-          <img src="http://lorempixel.com/500/357/city/4">
-          <a href="/three" class="case three">
-            <div class="inner">
-              <h1>Lastly</h1>
-              <p>An incredible branding project I want to show you at the end of this section</p>
-            </div>
-          </a>
-          <img src="http://lorempixel.com/500/357/city/6">
-          <img src="http://lorempixel.com/500/357/city/5">
-        </div>
+        <h3 class="title">Work</h3>
+        <p>Curated here is a collection of diverse and thorough work. I've had the pleasure of working on these designs for startups, non-profits, school work, and side projects. If you could use a hand growing your business or organisation through design, <a target="_blank" href="mailto:bilal@ayub.co?subject=Bilal, help me grow my brand">let me know</a>. I'm always open to inquires to craft delight.</p>
       </section>
-    </div>
+    </main>
     <footer>
       <div class="left">
-        <h3>Contact</h3>
-        <p>Feel free to <a href="mailto:bilal@ayub.co">email me</a> with love, hate, or indifference. Follow my nonsense <a href="https://twitter.com/hackthevoid">on Twitter</a>. I occasionally write some snippets <a href="http://codepen.io/hackthevoid/">on Codepen</a>.</p>
+        <h3>Connect</h3>
+        <p>I welcome love, curiosity, and indifference. You're humbly encouraged to <a target="_blank" href="mailto:bilal@ayub.co?subject=So I saw your portfolio">email me</a> or follow my nonsense <a href="https://twitter.com/hackthevoid">on Twitter</a>.</p>
       </div>
       <div class="right">
         <h3>Presently</h3>
-        <p>At the moment, I may be reading <a href="http://www.amazon.com/The-Medici-Effect-Elephants-Innovation/dp/1422102823">The Medici Effect</a>, listening to something <a href="https://soundcloud.com/theglitchmob/ourdemons-filous">like this</a>, or thinking about blueberries.</p>
+        <p>At the moment, I may perhaps be reading <a href="http://readernaut.com/hackthevoid/" id="book">a few of books</a>, listening to <a href="https://soundcloud.com/hackthevoid/likes" id="song">something like this</a>, or eating blueberries.</p>
       </div>
     </footer>
   </body>
+  <script>
+  function JSONP(url) {
+    var e = document.createElement("script");
+    e.src = url;
+    document.getElementsByTagName("body")[0].appendChild(e);
+  }
+
+  JSONP('https://www.kimonolabs.com/api/3s8055me?&apikey=09ea27c97f5d885d54ef4c502c6f0f48&callback=addBook');
+
+  function addBook(response) {
+    var str = response.results.latestBooks[0].book;
+    if(str.length < 25) {
+      document.getElementById("book").innerHTML = str;
+    }
+  }
+
+  JSONP('https://www.kimonolabs.com/api/8v4x74bc?apikey=09ea27c97f5d885d54ef4c502c6f0f48&callback=addSong');
+
+  function addSong(response) {
+    var str = response.results.likes[0].song.text;
+    if(str.length < 20) {
+      document.getElementById("song").innerHTML = str;
+    }
+  }
+  </script>
 </html>
