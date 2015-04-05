@@ -47,6 +47,14 @@ body {
   color: $light;
 }
 
+.disableFFS {
+  @include font-feature-settings("liga" 0, "dlig" 0, "onum" 0, "pnum" 0, "salt" 0, "swsh" 0);
+}
+
+.enableOrdn {
+  @include font-feature-settings("ordn");
+}
+
 em { font-style: italic }
 
 ::selection {
@@ -92,8 +100,8 @@ main {
   padding: 0 3.5rem;
   margin: 0;
   width: 100%;
-  word-break: break-word;
-  hyphens: auto;
+  // word-break: keep-all;
+  // hyphens: auto;
 }
 
 p.dropcap:first-of-type:first-letter {
@@ -199,7 +207,66 @@ nav {
   }
 }
 
+.experience {
+  font-size: 1rem;
+  position: relative;
+  padding-top: 164px;
+  color: shade($light, 20%);
+  div {
+    &:not(:first-of-type) { padding-top: 3.5rem }
+    width: 100%;
+    max-width: 360px;
+    top: 1rem;
+    opacity: 0;
+    &:first-of-type {
+      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.7s) forwards);
+    }
+    &:nth-of-type(2) {
+      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.8s) forwards);
+    }
+    &:nth-of-type(3) {
+      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.9s) forwards);
+    }
+  }
+  h3 {
+    text-align: left;
+    font-weight: 100;
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1.5rem;
+    letter-spacing: .2rem;
+    &:after {
+      left: 1px;
+      bottom: -.25rem;
+      background: shade($light, 20%);
+      @include media(max-width 1280px) { background: tint($navy, 20%) }
+    }
+  }
+  a {
+    position: static;
+    display: inline-block;
+    color: shade($light, 20%);
+    text-decoration: underline;
+    font-style: italic;
+    &:after { display: none }
+    @include media(max-width 1280px) { color: tint($navy, 20%) }
+  }
+  @include span-columns(4);
+  @include omega();
+  @include media(max-width 1280px) {
+    @include span-columns(12);
+    padding: 0 3.5rem 3.5rem 3.5rem;
+    background: $light;
+    color: tint($navy, 20%);
+    top: 1rem;
+    opacity: 0;
+    @include animation(aboutIn .3s ease-out ($animation-delay + 2.5s) forwards);
+  }
+}
+
 .works {
+  opacity: 0;
+  @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 3s) forwards);
   margin-top: 3.5rem;
   @include media(max-width 800px) { margin-top: 2.8rem }
   background-size: 100%;
@@ -214,7 +281,8 @@ nav {
 
 p {
   margin: 1.6em 0;
-  & a {
+  &:last-of-type { margin-bottom: 0 }
+  a {
     color: $navy;
     text-decoration: none;
     position: relative;
@@ -267,7 +335,6 @@ h3 {
   font-size: 3rem;
   line-height: 4rem;
   letter-spacing: .3rem;
-  margin-top: 1.6rem;
   text-align: center;
   &:after {
     content: "";
@@ -281,13 +348,14 @@ h3 {
 }
 
 footer {
-  // @include debug(red);
+  opacity: 0;
+  @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 3s) forwards);
   border-top: 1px $light solid;
   margin: 3.5rem 0;
   font-size: 1rem;
   position: relative;
   @include span-columns(12);
-  // width: 100%;
+  color: shade($light, 20%);
   div {
     padding-top: 3.5rem;
     @include span-columns(4);
@@ -302,12 +370,13 @@ footer {
     &:after {
       left: 1px;
       bottom: -.25rem;
+      background: shade($light, 20%);
     }
   }
   a {
     position: static;
     display: inline-block;
-    color: $light;
+    color: shade($light, 20%);
     text-decoration: underline;
     font-style: italic;
     &:after { display: none }
@@ -371,6 +440,10 @@ footer {
   footer {
     margin: 2.8rem 0;
   }
+  .experience {
+    div:not(:first-of-type) { padding-top: 2.8rem }
+    padding: 0 2.8rem 2.8rem 2.8rem;
+  }
 }
 
 @media screen and (max-width: 750px) {
@@ -380,6 +453,7 @@ footer {
     max-width: 300px;
     @include span-columns(12);
     &:not(:first-of-type) { padding-top: 0 }
+    &:last-of-type { padding-bottom: 0 }
   }
 }
 
@@ -413,7 +487,7 @@ footer {
     }
   }
   main {
-    padding: 0;
+    padding: 0 0 2.8rem 0;
     nav {
       margin: 5rem auto 1px;
       li { font-size: 1em; letter-spacing: .1rem; }
@@ -433,8 +507,12 @@ footer {
   footer {
     margin: 2.8rem 0 0;
     padding: 0 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     div { padding: 2.8rem 0 }
+  }
+  .experience {
+    font-size: 1.3rem;
+    padding: 1.8rem 1rem 2.8rem 1rem;
   }
 }
 
