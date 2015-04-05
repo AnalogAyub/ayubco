@@ -5,7 +5,10 @@ Personal portfolio site.
 
 # TODO
 - I'd like to parallax the bg image if I can avoid killing performance
+- Remove giant gradient to improve performance
 - VH mobile resize bug
+- Curate works (aka actual portfolio content)
+- Photography site
 - Blog via Ghost
 
 # Layout / Index
