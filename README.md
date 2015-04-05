@@ -34,6 +34,7 @@ Personal portfolio site.
 ### Footer [(reference)](http://daneden.me/)
 - Contact: email/twitter
 - Presently: reading/listening
+- Availability
 
 # Other Pages
 
