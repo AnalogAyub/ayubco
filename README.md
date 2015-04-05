@@ -5,22 +5,21 @@ Personal portfolio site.
 
 # TODO
 - I'd like to parallax the bg image if I can avoid killing performance
-- Remove giant gradient to improve performance
+- Remove giant gradient to improve performance (seems to only affect chrome desktop)
 - Curate works (aka actual portfolio content)
-- Have the excess CV content toggle with a “show more” on mobile, otherwise too much scrolling
 - Photography site
 - Blog via Ghost
 
-# Layout / Index
+# Layout
 
 ### Header
 
-> “I like to create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust.”
+> “I create and grow identities, experiences, and narratives with baryon-fed, cage-free stardust*”
 
 ### Nav
 - Work (index)
 - Exposures
-- Blog (unnamed, includes canon)
+- Writing
 
 ### Work [(reference)](http://jim-silverman.com/)
 - Grid of case studies mixed with dribbble-esque individual shots
