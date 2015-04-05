@@ -70,6 +70,7 @@ em { font-style: italic }
   background-attachment: fixed;
   height: 100vh;
   width: 100%;
+  transition: height 999999s;
   @include animation(in .8s cubic-bezier(1,0,.75,.75) $animation-delay forwards);
   &:after {
     content: '';
@@ -84,6 +85,7 @@ em { font-style: italic }
 
 header {
   margin: calc(100vh - 500px) 3.5rem 0;
+  transition: margin 999999s;
   height: 500px;
   position: absolute;
   top: 0;
