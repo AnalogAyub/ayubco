@@ -11,6 +11,7 @@ $navy: #152B3C;
 $blue: #85C6D6;
 $light: #FCFCFC;
 $animation-delay: .5s;
+$anim-curve: cubic-bezier(1,0,.75,.75);
 
 .wf-loading { visibility: hidden }
 .wf-active { visibility: visible }
@@ -70,8 +71,8 @@ em { font-style: italic }
   background-attachment: fixed;
   height: 100vh;
   width: 100%;
-  transition: height 999999s;
-  @include animation(in .8s cubic-bezier(1,0,.75,.75) $animation-delay forwards);
+  @include media(max-width 600px) { transition: height 9999s }
+  @include animation(in .8s $anim-curve $animation-delay forwards);
   &:after {
     content: '';
     position: absolute;
@@ -85,14 +86,14 @@ em { font-style: italic }
 
 header {
   margin: calc(100vh - 500px) 3.5rem 0;
-  transition: margin 999999s;
+  @include media(max-width 600px) { transition: margin 9999s }
   height: 500px;
   position: absolute;
   top: 0;
   p {
     margin-top: 2.3em;
     opacity: 0;
-    @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
+    @include animation(in .8s $anim-curve ($animation-delay + .8s) forwards);
     max-width: 600px;
   }
 }
@@ -102,8 +103,6 @@ main {
   padding: 0 3.5rem;
   margin: 0;
   width: 100%;
-  // word-break: keep-all;
-  // hyphens: auto;
 }
 
 p.dropcap:first-of-type:first-letter {
@@ -126,7 +125,7 @@ nav {
     opacity: 0;
     height: 1px;
     background: $light;
-    @include animation(navGrowRight .9s cubic-bezier(1,0,.75,.75) ($animation-delay + .8s) forwards);
+    @include animation(navGrowRight .9s $anim-curve ($animation-delay + .8s) forwards);
   }
   &:after {
     content: '';
@@ -137,7 +136,7 @@ nav {
     height: 1px;
     width: 100%;
     background: $light;
-    @include animation(navExpandDown .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 1.7s) forwards);
+    @include animation(navExpandDown .3s $anim-curve ($animation-delay + 1.7s) forwards);
   }
   li {
     display: block;
@@ -165,7 +164,7 @@ nav {
         background: $light;
         @include span-columns(2);
         @include shift(1);
-        transition: all .3s cubic-bezier(1,0,.75,.75);
+        transition: all .3s $anim-curve;
       }
       &:hover {
         transition: all .2s ease-in;
@@ -177,20 +176,17 @@ nav {
       }
     }
     &:first-of-type {
-      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 1.9s) forwards);
+      @include animation(in .3s $anim-curve ($animation-delay + 1.9s) forwards);
     }
     &:nth-of-type(2) {
-      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2s) forwards);
+      @include animation(in .3s $anim-curve ($animation-delay + 2s) forwards);
     }
     &:nth-of-type(3) {
-      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.1s) forwards);
+      @include animation(in .3s $anim-curve ($animation-delay + 2.1s) forwards);
     }
     @include span-columns(4);
   }
   @include span-columns(12);
-  // @include media(max-width 1280px) {
-  //   @include span-columns(12);
-  // }
 }
 
 .about {
@@ -221,13 +217,13 @@ nav {
     top: 1rem;
     opacity: 0;
     &:first-of-type {
-      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.7s) forwards);
+      @include animation(in .3s $anim-curve ($animation-delay + 2.7s) forwards);
     }
     &:nth-of-type(2) {
-      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.8s) forwards);
+      @include animation(in .3s $anim-curve ($animation-delay + 2.8s) forwards);
     }
     &:nth-of-type(3) {
-      @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 2.9s) forwards);
+      @include animation(in .3s $anim-curve ($animation-delay + 2.9s) forwards);
     }
   }
   h3 {
@@ -253,6 +249,51 @@ nav {
     &:after { display: none }
     @include media(max-width 1280px) { color: tint($navy, 20%) }
   }
+  .expand {
+    max-height: 100%;
+    transition: all 1s ease;
+  }
+  #toggle { display: none }
+  label {
+    position: relative;
+    text-align: center;
+    font-style: italic;
+    display: none;
+    cursor: pointer;
+    padding: .5rem;
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid tint($navy, 20%);
+    transition: all .5s $anim-curve;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: 1px solid transparent;
+      transition: all .2s $anim-curve;
+    }
+    &:hover {
+      &:after {
+        width: calc(100% + 1rem);
+        height: calc(100% + 1rem);
+        top: -.5rem;
+        left: -.5rem;
+        border: 1px solid tint($navy, 20%);
+      }
+    }
+  }
+  #toggle:checked ~ label {
+    background: tint($navy, 20%);
+    color: $light;
+  }
+  #toggle:checked ~ .expand {
+    max-height: 1000px;
+    transition: all .5s $anim-curve;
+    padding-top: 2.8rem;
+  }
   @include span-columns(4);
   @include omega();
   @include media(max-width 1280px) {
@@ -263,12 +304,17 @@ nav {
     top: 1rem;
     opacity: 0;
     @include animation(aboutIn .3s ease-out ($animation-delay + 2.5s) forwards);
+    .expand {
+      max-height: 0;
+      overflow: hidden;
+    }
+    label { display: block }
   }
 }
 
 .works {
   opacity: 0;
-  @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 3s) forwards);
+  @include animation(in .3s $anim-curve ($animation-delay + 3s) forwards);
   margin-top: 3.5rem;
   @include media(max-width 800px) { margin-top: 2.8rem }
   background-size: 100%;
@@ -298,7 +344,7 @@ p {
       height: 1px;
       background: $navy;
       width: 100%;
-      transition: all .2s cubic-bezier(1,0,.75,.75);
+      transition: all .2s $anim-curve;
     }
     &:hover {
       transition: all .2s ease-in;
@@ -318,7 +364,7 @@ h1 {
   font-size: 6.3rem;
   line-height: 11rem;
   opacity: 0;
-  @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .6s) forwards);
+  @include animation(in .8s $anim-curve ($animation-delay + .6s) forwards);
 }
 
 h2 {
@@ -327,7 +373,7 @@ h2 {
   font-size: 4.2rem;
   line-height: 4rem;
   opacity: 0;
-  @include animation(in .8s cubic-bezier(1,0,.75,.75) ($animation-delay + .7s) forwards);
+  @include animation(in .8s $anim-curve ($animation-delay + .7s) forwards);
 }
 
 h3 {
@@ -351,7 +397,7 @@ h3 {
 
 footer {
   opacity: 0;
-  @include animation(in .3s cubic-bezier(1,0,.75,.75) ($animation-delay + 3s) forwards);
+  @include animation(in .3s $anim-curve ($animation-delay + 3s) forwards);
   border-top: 1px $light solid;
   margin: 3.5rem 0;
   font-size: 1rem;
@@ -496,7 +542,7 @@ footer {
       &:after { display: none }
     }
     .about {
-      padding: 1rem;
+      padding: 2rem 1rem 1rem;
     }
     p.dropcap:first-of-type:first-letter {
       font-size: 3rem;
@@ -513,8 +559,10 @@ footer {
     div { padding: 2.8rem 0 }
   }
   .experience {
+    margin-top: -1px;
     font-size: 1.3rem;
     padding: 1.8rem 1rem 2.8rem 1rem;
+    label { max-width: 100% }
   }
 }
 

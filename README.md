@@ -6,7 +6,6 @@ Personal portfolio site.
 # TODO
 - I'd like to parallax the bg image if I can avoid killing performance
 - Remove giant gradient to improve performance
-- VH mobile resize bug
 - Curate works (aka actual portfolio content)
 - Have the excess CV content toggle with a “show more” on mobile, otherwise too much scrolling
 - Photography site
