@@ -70,7 +70,7 @@ em { font-style: italic }
     top: 0;
     width: 100%;
     height: 100%;
-    // @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 96%));
+    @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 96%));
   }
 }
 
@@ -283,9 +283,10 @@ h3 {
 footer {
   // @include debug(red);
   border-top: 1px $light solid;
-  margin: 3.5rem;
+  margin: 3.5rem 0;
   font-size: 1rem;
-  @include outer-container;
+  position: relative;
+  @include span-columns(12);
   // width: 100%;
   div {
     padding-top: 3.5rem;
@@ -368,7 +369,7 @@ footer {
     margin: 0 .7rem 0 0;
   }
   footer {
-    margin: 2.8rem;
+    margin: 2.8rem 0;
   }
 }
 
@@ -401,7 +402,7 @@ footer {
     background-position: 20% 100%;
     height: 75vh;
     &:after {
-      // @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 75%));
+      @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 75%));
     }
   }
   header {
