@@ -8,6 +8,7 @@ Personal portfolio site.
 - Remove giant gradient to improve performance
 - VH mobile resize bug
 - Curate works (aka actual portfolio content)
+- Have the excess CV content toggle with a “show more” on mobile, otherwise too much scrolling
 - Photography site
 - Blog via Ghost
 
@@ -28,7 +29,7 @@ Personal portfolio site.
 - Case studies should include challenges/solutions/scope per project [(reference)](http://braveux.com/work/stateofobesity)
 
 ### Fundamentals
-- CV Education/Experience on sidebar, collapses to underneath on mobile
+- CV Education/Experience on sidebar, collapses underneath on mobile
 
 ### Footer [(reference)](http://daneden.me/)
 - Contact: email/twitter
@@ -41,7 +42,7 @@ Personal portfolio site.
 > “selected photograhy, by passion not profession. I shoot on…”
 
 - Canon [(reference)](http://www.davidcole.me/#canon)
-- Musings (blog) (reference [1](http://codepen.io/hackthevoid/pen/ACkKl) [2](https://dribbble.com/shots/1919009-Best-2-years/attachments/329509))
+- Blog (reference [1](http://codepen.io/hackthevoid/pen/ACkKl) [2](https://dribbble.com/shots/1919009-Best-2-years/attachments/329509))
 
 
 ### Codewords
