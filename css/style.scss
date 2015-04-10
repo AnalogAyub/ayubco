@@ -57,15 +57,17 @@ em { font-style: italic }
     content: '';
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
+    @include media(max-width 800px) { bottom: 40px }
+    @include media(max-width 600px) { bottom: 200px }
     width: 100%;
-    height: 100%;
-    @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 96%));
+    height: 100px;
+    @include background-image(linear-gradient(rgba(21,24,26,0) 0%, rgba(21,24,26,1) 100%));
   }
 }
 
 .bgCover {
-  background: rgba(0,0,0,1);
+  background: $smoke;
   opacity: 0;
   position: absolute;
   left: 0;
@@ -103,6 +105,8 @@ p.dropcap:first-of-type:first-letter {
 }
 
 nav {
+  &.active { opacity: 0 }
+  transition: .2s opacity $anim-curve;
   color: rgba(0,0,0,0);
   position: relative;
   margin: -4rem auto 3.5rem;
@@ -177,6 +181,126 @@ nav {
     @include span-columns(4);
   }
   @include span-columns(12);
+}
+
+.hiddenNav {
+  &.active {
+    top: -2px;
+    opacity: 1;
+    @include media(max-width 800px) {
+      .navToggleButton {
+        margin-top: 0rem;
+        transition: margin-top .3s $anim-curve;
+      }
+    }
+  }
+  overflow: hidden;
+  #navToggle { display: none }
+  #navToggle:checked ~ .navToggleButton { margin-top: -4.5rem }
+  #navToggle:checked ~ .navToggleBack { top: 1.5rem }
+  .navToggleButton {
+    font-family: "acta-display";
+    margin-top: -4.5rem;
+    transition: margin-top 3s $anim-curve;
+    font-size: 1.7em;
+    width: 100%;
+    line-height: 4.5rem;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    span {
+      display: block;
+      position: relative;
+      left: calc(50% + 4.5rem);
+      top: -2.2rem;
+      width: 1.5rem;
+      height: 1px;
+      background: $light;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 2rem;
+        height: 1px;
+        left: 0;
+        top: -.5rem;
+        background: $light;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        width: 2rem;
+        height: 1px;
+        left: 0;
+        top: .5rem;
+        background: $light;
+      }
+    }
+  }
+  .navToggleBack {
+    position: fixed;
+    right: 2.5rem;
+    top: 7rem;
+    transition: top .3s $anim-curve;
+    width: 25px;
+    height: 25px;
+    @include transform(rotate(45deg));
+    cursor: pointer;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 1px;
+      left: 0;
+      top: 13px;
+      background: $light;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 25px;
+      left: 13px;
+      top: 0;
+      background: $light;
+    }
+  }
+  transition: .3s all $anim-curve;
+  transition-delay: .2s;
+  opacity: 0;
+  position: fixed;
+  top: -5rem;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  margin: 0;
+  padding: 0 3.5rem;
+  @include media(max-width 800px) { padding: 0 2.8rem }
+  background: $smoke;
+  border-bottom: 2px solid $blue;
+  height: 5rem;
+  li {
+    display: block;
+    text-align: center;
+    font-family: estilo-pro;
+    font-size: 1.2em;
+    font-weight: 100;
+    letter-spacing: .2rem;
+    line-height: 5rem;
+    & a {
+      color: $light;
+      text-decoration: none;
+      display: block;
+      margin-top: 2px;
+      cursor: pointer;
+      transition: all .2s ease-in;
+      &:hover {
+        transition: all .2s ease-in;
+        color: $blue;
+      }
+    }
+    @include media(max-width 800px) { @include span-columns(3) }
+    @include span-columns(4);
+  }
 }
 
 .about {
@@ -359,7 +483,6 @@ h1 {
 
 h2 {
   font-family: "acta-display";
-  font-weight: 700;
   font-size: 4.2rem;
   line-height: 4rem;
   opacity: 0;
@@ -388,7 +511,7 @@ h3 {
 footer {
   opacity: 0;
   @include animation(in .3s $anim-curve ($animation-delay + 3s) forwards);
-  border-top: 1px $light solid;
+  border-top: 1px shade($light, 20%) solid;
   margin: 3.5rem 0;
   font-size: 1rem;
   position: relative;
@@ -465,6 +588,9 @@ footer {
     nav {
       margin: -1rem auto 2.8rem;
     }
+    .hiddenNav {
+      li { font-size: 1.2em; letter-spacing: 0; }
+    }
     .about {
       padding: 2.8rem;
     }
@@ -513,9 +639,6 @@ footer {
     background-image: url("../media/malikamobile.jpg");
     background-position: 20% 100%;
     height: 75vh;
-    &:after {
-      @include background-image(linear-gradient(rgba(21,24,26,0) 50%, rgba(21,24,26,1) 75%));
-    }
   }
   header {
     margin: calc(75vh - 250px) 2.8rem 0;
@@ -530,6 +653,10 @@ footer {
       margin: 5rem auto 1px;
       li { font-size: 1em; letter-spacing: .1rem; }
       &:after { display: none }
+    }
+    .hiddenNav {
+      padding: 0;
+      li { font-size: .9em; letter-spacing: 0; }
     }
     .about {
       padding: 2rem 1rem 1rem;
@@ -560,6 +687,9 @@ footer {
   main {
     nav {
       margin: 6rem auto 0;
+      li { font-size: 1.2rem }
+    }
+    .hiddenNav {
       li { font-size: 1.2rem }
     }
     h3 { font-size: 2.5rem }

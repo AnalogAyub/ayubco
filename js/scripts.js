@@ -1,4 +1,5 @@
 var JSONP, addBook, addSong, ga, viewportTop, windowHeight, viewportBottom, distance, vDistance;
+var navOffset = jQuery('nav')[0].offsetTop;
 
 function isTouchDevice() {
   return 'ontouchstart' in window || 'onmsgesturechange' in window; // works on ie10
@@ -24,6 +25,14 @@ function scrollEvent(){
             $(this).css('opacity', 1 - distance);
             $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
         });
+
+        if(viewportTop >= navOffset) {
+            $('.hiddenNav').addClass('active');
+            $('nav').addClass('active');
+        } else {
+            $('.hiddenNav').removeClass('active');
+            $('nav').removeClass('active');
+        }
  
     }}
 }  
