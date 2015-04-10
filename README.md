@@ -4,8 +4,7 @@ ayub.co
 Personal portfolio site.
 
 # TODO
-- I'd like to parallax the bg image if I can avoid killing performance
-- Remove giant gradient to improve performance (seems to only affect chrome desktop)
+- Sticky nav
 - Curate works (aka actual portfolio content)
 - Photography site
 - Blog via Ghost

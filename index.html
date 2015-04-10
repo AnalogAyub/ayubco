@@ -8,8 +8,7 @@
     <meta name="theme-color" content="#15181A">
   </head>
   <body>
-    <div class="bg">
-    </div>
+    <div class="bg"><div class="bgCover"></div></div>
     <header>
       <h1>Hey,</h1>
       <h2>I’m Bilal Ayub.</h2>
@@ -72,37 +71,5 @@
       </footer>
     </main>
   </body>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-61542151-1', 'auto');
-    ga('send', 'pageview');
-
-    function JSONP(url) {
-      var e = document.createElement("script");
-      e.src = url;
-      document.getElementsByTagName("body")[0].appendChild(e);
-    }
-
-    JSONP('https://www.kimonolabs.com/api/3s8055me?&apikey=09ea27c97f5d885d54ef4c502c6f0f48&callback=addBook');
-
-    function addBook(response) {
-      var str = response.results.latestBooks[0].book;
-      if(str.length < 25) {
-        document.getElementById("book").innerHTML = str;
-      }
-    }
-
-    JSONP('https://www.kimonolabs.com/api/8v4x74bc?apikey=09ea27c97f5d885d54ef4c502c6f0f48&callback=addSong');
-
-    function addSong(response) {
-      var str = response.results.likes[0].song.text;
-      if(str.length < 20) {
-        document.getElementById("song").innerHTML = str;
-      }
-    }
-  </script>
+  <script src="js/scripts-min.js"></script>
 </html>
