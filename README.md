@@ -4,7 +4,6 @@ ayub.co
 Personal portfolio site.
 
 # TODO
-- Sticky nav
 - Curate works (aka actual portfolio content)
 - Photography site
 - Blog via Ghost
