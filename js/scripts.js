@@ -7,24 +7,25 @@ function isTouchDevice() {
 
 function scrollEvent(){
  
-    if(!isTouchDevice()){
         viewportTop = $(window).scrollTop();
         windowHeight = $(window).height();
         viewportBottom = windowHeight+viewportTop;
  
         if($(window).width()) {
  
-        $('.bgCover').each(function(){
-            distance = viewportTop / windowHeight;
-            $(this).css('opacity', distance);
-        });
+        if(!isTouchDevice()){
+            $('.bgCover').each(function(){
+                distance = viewportTop / windowHeight;
+                $(this).css('opacity', distance);
+            });
 
-        $('header').each(function(){
-            distance = viewportTop / windowHeight * 2;
-            vDistance = viewportTop * 0.2;
-            $(this).css('opacity', 1 - distance);
-            $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
-        });
+            $('header').each(function(){
+                distance = viewportTop / windowHeight * 2;
+                vDistance = viewportTop * 0.2;
+                $(this).css('opacity', 1 - distance);
+                $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
+            });
+        }}
 
         if(viewportTop >= navOffset) {
             $('.hiddenNav').addClass('active');
@@ -34,7 +35,6 @@ function scrollEvent(){
             $('nav').removeClass('active');
         }
  
-    }}
 }  
 
 $(document).ready(function(){
