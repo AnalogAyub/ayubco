@@ -185,7 +185,7 @@ nav {
 
 .hiddenNav {
   &.active {
-    top: -2px;
+    top: 0;
     opacity: 1;
     @include media(max-width 800px) {
       .navToggleButton {
