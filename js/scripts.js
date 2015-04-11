@@ -1,4 +1,3 @@
-var JSONP, addBook, addSong, ga, viewportTop, windowHeight, viewportBottom, distance, vDistance;
 var navOffset = jQuery('nav')[0].offsetTop;
 
 function isTouchDevice() {
@@ -7,23 +6,23 @@ function isTouchDevice() {
 
 function scrollEvent(){
  
-        viewportTop = $(window).scrollTop();
-        windowHeight = $(window).height();
-        viewportBottom = windowHeight+viewportTop;
+        var viewportTop = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        // var viewportBottom = windowHeight+viewportTop;
  
         if($(window).width()) {
  
         if(!isTouchDevice()){
             $('.bgCover').each(function(){
-                distance = viewportTop / windowHeight;
+                var distance = viewportTop / windowHeight;
                 $(this).css('opacity', distance);
             });
 
             $('header').each(function(){
-                distance = viewportTop / windowHeight * 2;
-                vDistance = viewportTop * 0.2;
+                var distance = viewportTop / windowHeight * 2;
+                // var vDistance = viewportTop * 0.2;
                 $(this).css('opacity', 1 - distance);
-                $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
+                // $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
             });
         }}
 
@@ -48,14 +47,14 @@ $(document).ready(function(){
  
 });
 
-JSONP = function(url) {
+var JSONP = function(url) {
   var e;
   e = document.createElement('script');
   e.src = url;
   document.getElementsByTagName('body')[0].appendChild(e);
 };
 
-addBook = function(response) {
+var addBook = function(response) {
   var str;
   str = response.results.latestBooks[0].book;
   if (str.length < 25) {
@@ -63,7 +62,7 @@ addBook = function(response) {
   }
 };
 
-addSong = function(response) {
+var addSong = function(response) {
   var str;
   str = response.results.likes[0].song.text;
   if (str.length < 20) {

@@ -187,6 +187,8 @@ nav {
   &.active {
     top: 0;
     opacity: 1;
+    transition: .3s all $anim-curve;
+    transition-delay: .2s;
     @include media(max-width 800px) {
       .navToggleButton {
         margin-top: 0rem;
@@ -264,8 +266,8 @@ nav {
       background: $light;
     }
   }
-  transition: .3s all $anim-curve;
-  transition-delay: .2s;
+  transition: .1s all $anim-curve;
+  transition-delay: 0;
   opacity: 0;
   position: fixed;
   top: -5rem;
@@ -276,7 +278,8 @@ nav {
   padding: 0 3.5rem;
   @include media(max-width 800px) { padding: 0 2.8rem }
   background: $smoke;
-  border-bottom: 2px solid $blue;
+  // border-bottom: 1px solid $light;
+  box-shadow: 0 0 5px $smoke;
   height: 5rem;
   li {
     display: block;
