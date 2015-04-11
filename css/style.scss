@@ -86,7 +86,7 @@ header {
     margin-top: 2.3em;
     opacity: 0;
     @include animation(in .8s $anim-curve ($animation-delay + .8s) forwards);
-    max-width: 600px;
+    max-width: 500px;
   }
 }
 
@@ -583,7 +583,7 @@ footer {
     margin: calc(95vh - 410px) 2.8rem 0;
     height: 410px;
     p {
-      max-width: 500px;
+      max-width: 450px;
     }
   }
   main {
@@ -647,7 +647,7 @@ footer {
     margin: calc(75vh - 250px) 2.8rem 0;
     height: 360px;
     p {
-      max-width: 280px;
+      max-width: 250px;
     }
   }
   main {
