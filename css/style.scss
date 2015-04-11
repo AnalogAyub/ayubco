@@ -199,7 +199,7 @@ nav {
   overflow: hidden;
   #navToggle { display: none }
   #navToggle:checked ~ .navToggleButton { margin-top: -4.5rem }
-  #navToggle:checked ~ .navToggleBack { top: 1.5rem }
+  #navToggle:checked ~ .navToggleBack { top: 1.5rem; opacity: 1; }
   .navToggleButton {
     font-family: "acta-display";
     margin-top: -4.5rem;
@@ -239,10 +239,11 @@ nav {
     }
   }
   .navToggleBack {
+    opacity: 0;
     position: fixed;
     right: 2.5rem;
     top: 7rem;
-    transition: top .3s $anim-curve;
+    transition: all .3s $anim-curve;
     width: 25px;
     height: 25px;
     @include transform(rotate(45deg));
@@ -278,7 +279,6 @@ nav {
   padding: 0 3.5rem;
   @include media(max-width 800px) { padding: 0 2.8rem }
   background: $smoke;
-  // border-bottom: 1px solid $light;
   box-shadow: 0 0 5px $smoke;
   height: 5rem;
   li {
