@@ -1,51 +1,42 @@
-var navOffset = jQuery('nav')[0].offsetTop;
+var svgOffset = jQuery('#dallasSkyline')[0].offsetTop;
 
 function isTouchDevice() {
   return 'ontouchstart' in window || 'onmsgesturechange' in window; // works on ie10
 }
 
 function scrollEvent(){
- 
-        var viewportTop = $(window).scrollTop();
-        var windowHeight = $(window).height();
-        // var viewportBottom = windowHeight+viewportTop;
- 
-        if($(window).width()) {
- 
-        if(!isTouchDevice()){
-            $('.bgCover').each(function(){
-                var distance = viewportTop / windowHeight;
-                $(this).css('opacity', distance);
-            });
+  var viewportTop = $(window).scrollTop();
+  var windowHeight = $(window).height();
+  var viewportBottom = windowHeight+viewportTop;
+  if($(window).width()) {
+    if(!isTouchDevice()){
+      $('.bgCover').each(function(){
+        var distance = viewportTop / windowHeight;
+        $(this).css('opacity', distance);
+      });
 
-            $('header').each(function(){
-                var distance = viewportTop / windowHeight * 2;
-                // var vDistance = viewportTop * 0.2;
-                $(this).css('opacity', 1 - distance);
-                // $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
-            });
-        }}
+      $('header').each(function(){
+        var distance = viewportTop / windowHeight * 2;
+        // var vDistance = viewportTop * 0.2;
+        $(this).css('opacity', 1 - distance);
+        // $(this).css('transform','translate3d(0, ' + '' + vDistance +'px,0)');
+      });
+    }
+  }
 
-        if(viewportTop >= navOffset) {
-            $('.hiddenNav').addClass('active');
-            $('nav').addClass('active');
-        } else {
-            $('.hiddenNav').removeClass('active');
-            $('nav').removeClass('active');
-        }
+  if(viewportBottom > svgOffset) {
+    $('body').addClass('svgInViewport');
+  }
+
+  // if(viewportTop >= navOffset) {
+  //     $('.hiddenNav').addClass('active');
+  //     $('nav').addClass('active');
+  // } else {
+  //     $('.hiddenNav').removeClass('active');
+  //     $('nav').removeClass('active');
+  // }
  
 }  
-
-$(document).ready(function(){
- 
-    function draw() {
-        requestAnimationFrame(draw);
-        // Drawing code goes here
-        scrollEvent();
-    }
-    draw();
- 
-});
 
 var JSONP = function(url) {
   var e;
@@ -64,8 +55,10 @@ var addBook = function(response) {
 
 var addSong = function(response) {
   var str;
+  var rmv = "-";
   str = response.results.likes[0].song.text;
-  if (str.length < 20) {
+  str = str.slice( str.indexOf( rmv ) + rmv.length );
+  if (str.length < 35) {
     document.getElementById('song').innerHTML = str;
   }
 };
@@ -83,7 +76,14 @@ var addSong = function(response) {
   m.parentNode.insertBefore(a, m);
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', 'UA-61542151-1', 'auto');
-ga('send', 'pageview');
-JSONP('https://www.kimonolabs.com/api/3s8055me?&apikey=09ea27c97f5d885d54ef4c502c6f0f48&callback=addBook');
-JSONP('https://www.kimonolabs.com/api/8v4x74bc?apikey=09ea27c97f5d885d54ef4c502c6f0f48&callback=addSong');
+$(document).ready(function(){
+  function draw() {
+    requestAnimationFrame(draw);
+    scrollEvent();
+  }
+  draw();
+  ga('create', 'UA-61542151-1', 'auto');
+  ga('send', 'pageview');
+  JSONP('https://www.kimonolabs.com/api/3s8055me?apikey=cY8WaZ10hl5gD1RlLuHuhpg8JicmWqwf&callback=addBook');
+  JSONP('https://www.kimonolabs.com/api/8v4x74bc?apikey=cY8WaZ10hl5gD1RlLuHuhpg8JicmWqwf&callback=addSong');
+});

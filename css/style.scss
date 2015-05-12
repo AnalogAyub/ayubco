@@ -11,10 +11,6 @@ $light: #FCFCFC;
 $animation-delay: .5s;
 $anim-curve: cubic-bezier(1,0,.75,.75);
 
-@mixin debug($color) {
-  border: 1px $color solid;
-}
-
 body {
   text-rendering: optimizeLegibility;
   @include font-feature-settings("liga", "dlig", "onum", "pnum", "salt", "swsh");
@@ -181,129 +177,6 @@ nav {
     @include span-columns(4);
   }
   @include span-columns(12);
-}
-
-.hiddenNav {
-  &.active {
-    top: 0;
-    opacity: 1;
-    transition: .3s all $anim-curve;
-    transition-delay: .2s;
-    @include media(max-width 800px) {
-      .navToggleButton {
-        margin-top: 0rem;
-        transition: margin-top .3s $anim-curve;
-      }
-    }
-  }
-  overflow: hidden;
-  #navToggle { display: none }
-  #navToggle:checked ~ .navToggleButton { margin-top: -4.5rem }
-  #navToggle:checked ~ .navToggleBack { top: 1.5rem; opacity: 1; }
-  .navToggleButton {
-    font-family: "acta-display";
-    margin-top: -4.5rem;
-    transition: margin-top 3s $anim-curve;
-    font-size: 1.7em;
-    width: 100%;
-    line-height: 4.5rem;
-    text-align: center;
-    display: block;
-    cursor: pointer;
-    span {
-      display: block;
-      position: relative;
-      left: calc(50% + 4.5rem);
-      top: -2.2rem;
-      width: 1.5rem;
-      height: 1px;
-      background: $light;
-      &:before {
-        content: "";
-        position: absolute;
-        width: 2rem;
-        height: 1px;
-        left: 0;
-        top: -.5rem;
-        background: $light;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        width: 2rem;
-        height: 1px;
-        left: 0;
-        top: .5rem;
-        background: $light;
-      }
-    }
-  }
-  .navToggleBack {
-    opacity: 0;
-    position: fixed;
-    right: 2.5rem;
-    top: 7rem;
-    transition: all .3s $anim-curve;
-    width: 25px;
-    height: 25px;
-    @include transform(rotate(45deg));
-    cursor: pointer;
-    &:before {
-      content: "";
-      position: absolute;
-      width: 25px;
-      height: 1px;
-      left: 0;
-      top: 13px;
-      background: $light;
-    }
-    &:after {
-      content: "";
-      position: absolute;
-      width: 1px;
-      height: 25px;
-      left: 13px;
-      top: 0;
-      background: $light;
-    }
-  }
-  transition: .1s all $anim-curve;
-  transition-delay: 0;
-  opacity: 0;
-  position: fixed;
-  top: -5rem;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-  margin: 0;
-  padding: 0 3.5rem;
-  @include media(max-width 800px) { padding: 0 2.8rem }
-  background: $smoke;
-  box-shadow: 0 0 5px $smoke;
-  height: 5rem;
-  li {
-    display: block;
-    text-align: center;
-    font-family: estilo-pro;
-    font-size: 1.2em;
-    font-weight: 100;
-    letter-spacing: .2rem;
-    line-height: 5rem;
-    & a {
-      color: $light;
-      text-decoration: none;
-      display: block;
-      margin-top: 2px;
-      cursor: pointer;
-      transition: all .2s ease-in;
-      &:hover {
-        transition: all .2s ease-in;
-        color: $blue;
-      }
-    }
-    @include media(max-width 800px) { @include span-columns(3) }
-    @include span-columns(4);
-  }
 }
 
 .about {
@@ -477,7 +350,6 @@ p {
 
 h1 {
   font-family: "acta-display";
-  font-weight: 900;
   font-size: 6.3rem;
   line-height: 11rem;
   opacity: 0;
@@ -515,7 +387,7 @@ footer {
   opacity: 0;
   @include animation(in .3s $anim-curve ($animation-delay + 3s) forwards);
   border-top: 1px shade($light, 20%) solid;
-  margin: 3.5rem 0;
+  margin-bottom: 3.5rem;
   font-size: 1rem;
   position: relative;
   @include span-columns(12);
@@ -605,7 +477,7 @@ footer {
     margin: 0 .7rem 0 0;
   }
   footer {
-    margin: 2.8rem 0;
+    margin-bottom: 2.8rem;
   }
   .experience {
     div:not(:first-of-type) { padding-top: 2.8rem }
@@ -673,7 +545,7 @@ footer {
   }
 
   footer {
-    margin: 2.8rem 0 0;
+    margin: 0;
     padding: 0 1rem;
     font-size: 1.3rem;
     div { padding: 2.8rem 0 }
@@ -697,6 +569,28 @@ footer {
     }
     h3 { font-size: 2.5rem }
   }
+}
+
+svg {
+  margin-bottom: -10px;
+  g {
+    stroke-dasharray: 740;
+    stroke-dashoffset: -740;
+    path {
+      stroke-width: 2px;
+      @include media(max-width 950px) { stroke-width: 4px }
+      @include media(max-width 600px) { stroke-width: 6px }
+      stroke: shade($light, 20%);
+    }
+  }
+}
+
+.svgInViewport svg g {
+  @include animation(svgStroke 2s cubic-bezier(1,0,.5,.5) forwards);
+}
+
+@include keyframes(svgStroke) {
+  to { stroke-dashoffset: 0 }
 }
 
 @include keyframes(in) {
