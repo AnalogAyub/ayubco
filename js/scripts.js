@@ -1,4 +1,17 @@
-var svgOffset = jQuery('#dallasSkyline')[0].offsetTop;
+InstantClick.init();
+
+var layzr = new Layzr({
+  selector: '[data-layzr]',
+  attr: 'data-layzr',
+  retinaAttr: 'data-layzr-retina',
+  bgAttr: 'data-layzr-bg',
+  threshold: 35,
+  callback: function() {
+    this.classList.add('loaded');
+  }
+});
+
+var svgOffset = jQuery('svg')[0].offsetTop;
 
 function isTouchDevice() {
   return 'ontouchstart' in window || 'onmsgesturechange' in window; // works on ie10

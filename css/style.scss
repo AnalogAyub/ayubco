@@ -1,4 +1,4 @@
-@import "reset", "bourbon", "neat";
+@import "reset", "bourbon", "neat", "toolkit";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -40,7 +40,7 @@ em { font-style: italic }
 .bg {
   z-index: -10;
   opacity: 0;
-  background-image: url("../media/malika.jpg");
+  background-image: url("../media/malika@2x.jpg");
   background-size: cover;
   background-position: 10% 100%;
   background-attachment: fixed;
@@ -307,13 +307,133 @@ nav {
   @include animation(in .3s $anim-curve ($animation-delay + 3s) forwards);
   margin-top: 3.5rem;
   @include media(max-width 800px) { margin-top: 2.8rem }
-  background-size: 100%;
   position: relative;
-  padding: 3.5rem;
-  a { color: $light; &:after { background: $light } }
-  @include span-columns(8);
+  h3 { margin-bottom: 3.5rem }
+  padding-bottom: 3.5rem;
+  float: left;
+  @include fill-parent;
   @include media(max-width 1280px) {
     @include span-columns(12);
+  }
+}
+
+.snip {
+  opacity: 0;
+  height: 400px;
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+  background: $light;
+  color: $light;
+  position: relative;
+  @include media(min-width 600px) {
+    &.loaded {
+      &:nth-of-type(3n+1) { @include animation(articleIn .8s $anim-curve .7s forwards) }
+      &:nth-of-type(3n+2) { @include animation(articleIn .8s $anim-curve 1s forwards) }
+      &:nth-of-type(3n+3) { @include animation(articleIn .8s $anim-curve 1.3s forwards) }
+      @include media(max-width 1280px) {
+        &:nth-of-type(2n+1) { @include animation(articleIn .8s $anim-curve .7s forwards) }
+        &:nth-of-type(2n+2) { @include animation(articleIn .8s $anim-curve 1s forwards) }
+      }
+      @include media(max-width 800px) {
+        &:nth-of-type(n) { @include animation(articleIn .8s $anim-curve .7s forwards) }
+      }
+    }
+  }
+  padding: 3.5rem;
+  transform: translateY(1rem);
+  .content {
+    a {
+      text-decoration: none;
+      color: $light;
+      &:after {
+        background: $light;
+      }
+    }
+    .tag {
+      text-decoration: none;
+      font-family: 'estilo-pro';
+      border: 1px $light solid;
+      padding: 2px 8px 0px 10px;
+      letter-spacing: 1px;
+      margin-right: .8em;
+      font-size: 90%;
+      text-transform: lowercase;
+      transition: .3s $anim-curve all;
+      @include font-feature-settings("liga" 0, "dlig" 0, "onum" 0, "pnum" 0, "salt" 0, "swsh" 0);
+    }
+    z-index: 2;
+    h3 {
+      margin-bottom: 1em;
+      font-family: 'acta-display';
+      letter-spacing: 0;
+      line-height: 1em;
+      font-size: 1.4em;
+      text-align: left;
+      &:after {
+        background: $light;
+        left: 0;
+        bottom: -.5em;
+      }
+    }
+  }
+  z-index: 0;
+  float: left;
+  width: 33.333333333333333333333%;
+  margin: 0;
+  overflow: hidden;
+  @include media(max-width 1280px) {
+    width: 50%;
+    padding: 2.8rem;
+    height: 350px;
+  }
+  @include media(max-width 800px) {
+    height: 300px;
+    width: 100%;
+  }
+  @include media(max-width 600px) {
+    opacity: 1;
+    margin-top: 1rem;
+    transform: translateY(-1rem);
+  }
+  &:after {
+    transition: .3s $anim-curve all;
+    @include coverer();
+    content: '';
+    background: rgba(0,0,0,.3);
+    z-index: -1;
+  }
+  &:hover {
+    .tag {
+      background: $light;
+      border-color: $light;
+      &.restricted {
+        background: rgba(212, 27, 43, 1);
+        border-color: rgba(212, 27, 43, 1);
+      }
+      color: $smoke;
+    }
+    &:after {
+      top: 1rem;
+      left: 1rem;
+      width: calc(100% - 2rem);
+      height: calc(100% - 2rem);
+      background: rgba(0,0,0,.87);
+    }
+  }
+  @include media(max-width 600px) {
+    padding: 2rem;
+    .tag {
+      background: $light;
+      border-color: $light !important;
+      color: $smoke !important;
+      &.restricted {
+        background: rgba(212, 27, 43, 1) !important;
+        border-color: rgba(212, 27, 43, 1) !important;
+      }
+    }
+    &:after {
+      background: rgba(0,0,0,.6);
+    }
   }
 }
 
@@ -469,7 +589,7 @@ footer {
     .about {
       padding: 2.8rem;
     }
-    .works { padding: 2.8rem }
+    .works { padding-bottom: 2.8rem }
   }
   p.dropcap:first-of-type:first-letter {
     font-size: 3.5rem;
@@ -511,7 +631,7 @@ footer {
     letter-spacing: 0;
   }
   .bg {
-    background-image: url("../media/malikamobile.jpg");
+    background-image: url("../media/malika.jpg");
     background-position: 20% 100%;
     height: 75vh;
   }
@@ -586,7 +706,7 @@ svg {
 }
 
 .svgInViewport svg g {
-  @include animation(svgStroke 2s cubic-bezier(1,0,.5,.5) forwards);
+  @include animation(svgStroke 3s cubic-bezier(1,0,.5,.5) forwards);
 }
 
 @include keyframes(svgStroke) {
@@ -612,6 +732,11 @@ svg {
   0% { top: 0 }
   50% { opacity: 0 }
   100% { top: 5rem; opacity: 1; }
+}
+
+@include keyframes(articleIn) {
+  0% { transform: translateY(1rem); opacity: 0; }
+  100% { transform: translateY(-1rem); opacity: 1; }
 }
 
 /*
