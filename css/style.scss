@@ -46,7 +46,7 @@ em { font-style: italic }
   background-attachment: fixed;
   height: 100vh;
   width: 100%;
-  @include transform(tranzlateZ(0));
+  // @include transform(tranzlateZ(0));
   @include media(max-width 600px) { transition: height 9999s }
   @include animation(in .8s $anim-curve $animation-delay forwards);
   &:after {
@@ -340,7 +340,7 @@ nav {
     }
   }
   padding: 3.5rem;
-  transform: translateY(1rem);
+  @include transform(translateY(1rem));
   .content {
     a {
       text-decoration: none;
@@ -393,7 +393,7 @@ nav {
   @include media(max-width 600px) {
     opacity: 1;
     margin-top: 1rem;
-    transform: translateY(-1rem);
+    @include transform(translateY(-1rem));
   }
   &:after {
     transition: .3s $anim-curve all;
@@ -692,6 +692,7 @@ footer {
 }
 
 svg {
+  position: relative;
   margin-bottom: -10px;
   g {
     stroke-dasharray: 740;
@@ -705,12 +706,53 @@ svg {
   }
 }
 
+.dallas {
+  position: relative;
+  text-align: center;
+  color: shade($light, 20%);
+  font-family: 'estilo-pro';
+  width: 200px;
+  height: 2em;
+  line-height: 2.2em;
+  margin: -2em auto 0 auto;
+  opacity: 0;
+  @include transform(translateY(-3.5rem) scale(0));
+  @include media(max-width 950px) { @include transform(translateY(-2.8rem) scale(0)) }
+  @include media(max-width 800px) { @include transform(translateY(-1rem) scale(0)) }
+  @include media(max-width 600px) { @include transform(translateY(1px) scale(0)) }
+  @include debug(shade($light, 20%));
+  background: $smoke;
+}
+
+.svgInViewport .dallas {
+  @include animation(dallasInAll 1s cubic-bezier(1,0,.5,1.5) 2s forwards);
+  @include media(max-width 950px) { @include animation(dallasIn950 1s cubic-bezier(1,0,.5,1.5) 2s forwards); }
+  @include media(max-width 800px) { @include animation(dallasIn800 1s cubic-bezier(1,0,.5,1.5) 2s forwards); }
+  @include media(max-width 600px) { @include animation(dallasIn600 1s cubic-bezier(1,0,.5,1.5) 2s forwards); }
+}
+
 .svgInViewport svg g {
   @include animation(svgStroke 3s cubic-bezier(1,0,.5,.5) forwards);
 }
 
 @include keyframes(svgStroke) {
   to { stroke-dashoffset: 0 }
+}
+
+@include keyframes(dallasInAll) {
+  to { @include transform(translateY(-3.5rem) scale(1)); opacity: 1; }
+}
+
+@include keyframes(dallasIn950) {
+  to { @include transform(translateY(-2.8rem) scale(1)); opacity: 1; }
+}
+
+@include keyframes(dallasIn800) {
+  to { @include transform(translateY(-1rem) scale(.75)); opacity: 1; }
+}
+
+@include keyframes(dallasIn600) {
+  to { @include transform(translateY(1px) scale(.5)); opacity: 1; }
 }
 
 @include keyframes(in) {
@@ -735,8 +777,8 @@ svg {
 }
 
 @include keyframes(articleIn) {
-  0% { transform: translateY(1rem); opacity: 0; }
-  100% { transform: translateY(-1rem); opacity: 1; }
+  0% { @include transform(translateY(1rem)); opacity: 0; }
+  100% { @include transform(translateY(-1rem)); opacity: 1; }
 }
 
 /*
