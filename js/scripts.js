@@ -1,3 +1,31 @@
+var JSONP = function(url) {
+  var e;
+  e = document.createElement('script');
+  e.src = url;
+  document.getElementsByTagName('body')[0].appendChild(e);
+};
+
+var addBook = function(response) {
+  var str;
+  str = response.results.latestBooks[0].book;
+  if (str.length < 25) {
+    document.getElementById('book').innerHTML = str;
+  }
+};
+
+var addSong = function(response) {
+  var str;
+  var rmv = "-";
+  str = response.results.likes[0].song.text;
+  str = str.slice( str.indexOf( rmv ) + rmv.length );
+  if (str.length < 35) {
+    document.getElementById('song').innerHTML = str;
+  }
+};
+
+JSONP('https://www.kimonolabs.com/api/3s8055me?apikey=cY8WaZ10hl5gD1RlLuHuhpg8JicmWqwf&callback=addBook');
+JSONP('https://www.kimonolabs.com/api/8v4x74bc?apikey=cY8WaZ10hl5gD1RlLuHuhpg8JicmWqwf&callback=addSong');
+
 InstantClick.init();
 
 var layzr = new Layzr({
@@ -11,13 +39,12 @@ var layzr = new Layzr({
   }
 });
 
-var svgOffset = jQuery('svg')[0].offsetTop;
-
 function isTouchDevice() {
   return 'ontouchstart' in window || 'onmsgesturechange' in window; // works on ie10
 }
 
 function scrollEvent(){
+  // var svgOffset = jQuery('svg')[0].offsetTop;
   var viewportTop = $(window).scrollTop();
   var windowHeight = $(window).height();
   var viewportBottom = windowHeight+viewportTop;
@@ -49,32 +76,7 @@ function scrollEvent(){
   //     $('nav').removeClass('active');
   // }
  
-}  
-
-var JSONP = function(url) {
-  var e;
-  e = document.createElement('script');
-  e.src = url;
-  document.getElementsByTagName('body')[0].appendChild(e);
-};
-
-var addBook = function(response) {
-  var str;
-  str = response.results.latestBooks[0].book;
-  if (str.length < 25) {
-    document.getElementById('book').innerHTML = str;
-  }
-};
-
-var addSong = function(response) {
-  var str;
-  var rmv = "-";
-  str = response.results.likes[0].song.text;
-  str = str.slice( str.indexOf( rmv ) + rmv.length );
-  if (str.length < 35) {
-    document.getElementById('song').innerHTML = str;
-  }
-};
+}
 
 (function(i, s, o, g, r, a, m) {
   i.GoogleAnalyticsObject = r;
@@ -97,6 +99,4 @@ $(document).ready(function(){
   draw();
   ga('create', 'UA-61542151-1', 'auto');
   ga('send', 'pageview');
-  JSONP('https://www.kimonolabs.com/api/3s8055me?apikey=cY8WaZ10hl5gD1RlLuHuhpg8JicmWqwf&callback=addBook');
-  JSONP('https://www.kimonolabs.com/api/8v4x74bc?apikey=cY8WaZ10hl5gD1RlLuHuhpg8JicmWqwf&callback=addSong');
 });
