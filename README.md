@@ -8,6 +8,7 @@ Personal portfolio site.
 - Rewrite copy
 - Case studies [(reference)](http://braveux.com/work/stateofobesity)
 - Photography site
+- Improve performance / redo header
 
 # Other Pages
 
