@@ -4,6 +4,8 @@ ayub.co
 Personal portfolio site.
 
 # TODO
+- Get permission for Dallas SVG
+- Rewrite copy
 - Case studies [(reference)](http://braveux.com/work/stateofobesity)
 - Photography site
 
