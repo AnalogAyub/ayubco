@@ -241,7 +241,6 @@ nav {
   }
   .expand {
     max-height: 100%;
-    transition: all 1s ease;
   }
   #toggle { display: none }
   label {
@@ -270,8 +269,6 @@ nav {
       transition: all .2s $anim-curve;
     }
     &:hover {
-      // background: tint($navy, 20%);
-      // color: $light;
       &:after {
         width: calc(100% + 1rem);
         height: calc(100% + 1rem);
@@ -287,8 +284,8 @@ nav {
   }
   #toggle:checked ~ .expand {
     max-height: 1000px;
-    transition: all .5s $anim-curve;
     padding-top: 2.8rem;
+    transition: max-height .5s $anim-curve .3s, padding-top .5s $anim-curve;
   }
   @include span-columns(4);
   @include omega();
@@ -303,6 +300,7 @@ nav {
     .expand {
       max-height: 0;
       overflow: hidden;
+      transition: max-height 1s $anim-curve, padding-top .5s $anim-curve .6s;
     }
     label { display: block }
   }
