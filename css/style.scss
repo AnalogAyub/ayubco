@@ -270,8 +270,8 @@ nav {
       transition: all .2s $anim-curve;
     }
     &:hover {
-      background: tint($navy, 20%);
-      color: $light;
+      // background: tint($navy, 20%);
+      // color: $light;
       &:after {
         width: calc(100% + 1rem);
         height: calc(100% + 1rem);
@@ -287,7 +287,7 @@ nav {
   }
   #toggle:checked ~ .expand {
     max-height: 1000px;
-    transition: all .3s $anim-curve;
+    transition: all .5s $anim-curve;
     padding-top: 2.8rem;
   }
   @include span-columns(4);
