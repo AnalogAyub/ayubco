@@ -17,7 +17,8 @@ var addSong = function(response) {
   var str;
   var rmv = "-";
   str = response.results.likes[0].song.text;
-  str = str.slice( str.indexOf( rmv ) + rmv.length );
+  str = str.slice(str.indexOf(rmv) + rmv.length);
+  str = str.replace(/ *\[[^)]*\] */g, " ").trim();
   if (str.length < 35) {
     document.getElementById('song').innerHTML = str;
   }
