@@ -4,11 +4,10 @@ ayub.co
 Personal portfolio site.
 
 # TODO
-- Get permission for Dallas SVG
-- Rewrite copy
-- Case studies [(reference)](http://braveux.com/work/stateofobesity)
+- Rewrite about copy
+- Write case studies [(reference)](http://braveux.com/work/stateofobesity)
 - Photography site
-- Improve performance / redo header
+- Improve performance / redo header without VH units
 
 # Other Pages
 
