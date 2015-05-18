@@ -369,7 +369,7 @@ nav {
           left: -.5rem;
           transition: .2s all $anim-curve;
         }
-        &.restricted:hover:after { @include debug(rgba(212, 27, 43, 1)); }
+        &.restricted:hover:after { @include debug(rgba(212, 27, 43, 1)) }
       }
       text-decoration: none;
       color: $light;
