@@ -44,14 +44,14 @@ function isTouchDevice() {
 }
 
 function scrollEvent(){
-  // var svgOffset = jQuery('svg')[0].offsetTop;
+  var svgOffset = jQuery('svg')[0].offsetTop;
   var viewportTop = $(window).scrollTop();
   var windowHeight = $(window).height();
   var viewportBottom = windowHeight+viewportTop;
   if($(window).width()) {
     if(!isTouchDevice()){
       $('.bgCover').each(function(){
-        var distance = viewportTop / windowHeight;
+        var distance = viewportTop / windowHeight * 2;
         $(this).css('opacity', distance);
       });
 
