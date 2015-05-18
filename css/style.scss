@@ -343,16 +343,41 @@ nav {
   @include transform(translateY(1rem));
   .content {
     a {
+      h3 {
+        @include coverer();
+        padding: 3.5rem;
+        @include media(max-width 1280px) { padding: 2.8rem }
+        @include media(max-width 600px) { padding: 2rem }
+      }
+      &.tag {
+        bottom: 3.5rem;
+        @include media(max-width 1280px) { bottom: 2.8rem }
+        @include media(max-width 600px) { bottom: 2rem }
+        position: absolute;
+        &:after {
+          content: '';
+          position: absolute;
+          @include coverer();
+          transition: .2s all $anim-curve;
+          @include debug(rgba(0,0,0,0));
+        }
+        &:hover:after {
+          @include debug($light);
+          width: calc(100% + 1rem);
+          height: calc(100% + 1rem);
+          top: -.5rem;
+          left: -.5rem;
+          transition: .2s all $anim-curve;
+        }
+        &.restricted:hover:after { @include debug(rgba(212, 27, 43, 1)); }
+      }
       text-decoration: none;
       color: $light;
-      &:after {
-        background: $light;
-      }
     }
     .tag {
       text-decoration: none;
       font-family: 'estilo-pro';
-      border: 1px $light solid;
+      border: 2px $light solid;
       padding: 2px 8px 0px 10px;
       letter-spacing: 1px;
       margin-right: .8em;
