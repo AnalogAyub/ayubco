@@ -40,3 +40,6 @@ Thumbs.db
 #########
 .sass-cache
 config.codekit
+
+*.psd
+*.svg
